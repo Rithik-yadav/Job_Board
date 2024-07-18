@@ -6,6 +6,9 @@ const jobLogin = require("./controller/loginJob");
 const cookie = require("./middleware/cookies");
 const feed = require("./controller/feed");
 const home = require("./controller/home");
+const profile = require("./controller/profile");
+const employer = require("./controller/eLogin");
+const employerSignup = require("./controller/eSignup");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +22,9 @@ app.get("/", cookie.checkCookies, home.homeRender);
 //Feed
 app.get("/feed", cookie.checkCookies, feed.feedRender);
 
+//profile
+app.get("/profile", cookie.checkCookies, profile.profileRender);
+
 //Signup
 app.get("/signup", jobSign.jobSignUp);
 app.post("/signup", jobSign.postSignup);
@@ -26,4 +32,11 @@ app.post("/signup", jobSign.postSignup);
 //Login
 app.get("/login", jobLogin.loginJob);
 app.post("/login", jobLogin.loginPost);
+
+//employer login signup
+app.get("/employer/login", employer.eLoginRender);
+// app.post("/employer", employer.eLoginPost);
+
+//employer signup
+app.get("/employer/signup", employerSignup.eSignupRender);
 module.exports = app;

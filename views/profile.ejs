@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./styles/profile.css">
+    <link rel="stylesheet" href="./styles/anavbar.css">
+    <link rel="icon" type="image/png" href="./images/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Job-Board</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="employer">Employer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Complete Your Profile</h1>
+        </div>
+        <form class="profile-form">
+            <div class="section">
+                <h2>Personal Information</h2>
+                <div class="input-field">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" required>
+                </div>
+                <div class="input-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Experience</h2>
+                <div class="input-field">
+                    <label for="experience">Add Your Experience</label>
+                    <textarea id="experience" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Education</h2>
+                <div class="input-field">
+                    <label for="education">Add Your Education</label>
+                    <textarea id="education" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="input-field">
+                    <label for="skills">Add Your Skills</label>
+                    <textarea id="skills" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Account Settings</h2>
+                <div class="input-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="input-field">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn">Save Profile</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

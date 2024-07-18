@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Sign Up</title>
+    <link rel="stylesheet" href="/styles/employerSignup.css">
+    <link rel="stylesheet" href="/styles/anavbar.css">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Job-Board</div>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="employer">JobSeeker</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form class="form">
+        <p class="title">Level Up Your Hiring📈</p>
+        <p class="message">Stop wasting time searching for talent, let them find you!🔍</p>
+        <div class="flex">
+            <label>
+                <input class="input" type="text" placeholder="" required="">
+                <span>Company Name</span>
+            </label>
+
+            <label>
+                <input class="input" type="text" placeholder="" required="">
+                <span>Location</span>
+            </label>
+        </div>
+
+        <label>
+            <input class="input" type="email" placeholder="" required="">
+            <span>Email</span>
+        </label>
+
+        <label>
+            <input class="input" id="password" type="password" placeholder="" required="">
+            <span>Password</span>
+        </label>
+        <label>
+            <input class="input" id="confirmPassword" type="password" placeholder="" required="">
+            <span>Confirm password</span>
+        </label>
+        <button class="submit" type="submit">Submit</button>
+        <p class="signin">Already have an acount ? <a href="#">Signin</a> </p>
+    </form>
+
+    <script>
+        const form = document.querySelector('.form');
+
+        form.addEventListener('submit', (event) => {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault(); // Prevent form submission
+                alert("Passwords do not match! Please re-enter your password.");
+            }
+        });
+    </script>
+</body>
+
+</html>
