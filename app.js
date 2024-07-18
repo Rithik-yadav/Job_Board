@@ -1,11 +1,11 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const JobSeeker = require("./models/JobSeeker"); // Path to your JobSeeker model
-const Employer = require("./models/employer"); // Adjust to lowercase 'employer'
-const Admin = require("./models/admin"); // Path to your Admin model
-const Job = require("./models/job"); // Path to your Job model
 const jobSign = require("./controller/signupJob");
+const jobLogin = require("./controller/loginJob");
+const cookie = require("./middleware/cookies");
+const feed = require("./controller/feed");
+const home = require("./controller/home");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -13,12 +13,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
-app.get("/feed", (req, res) => {
-  res.render("feed");
-});
+//Home
+app.get("/", cookie.checkCookies, home.homeRender);
 
+//Feed
+app.get("/feed", cookie.checkCookies, feed.feedRender);
+
+//Signup
 app.get("/signup", jobSign.jobSignUp);
+app.post("/signup", jobSign.postSignup);
+
+//Login
+app.get("/login", jobLogin.loginJob);
+app.post("/login", jobLogin.loginPost);
 module.exports = app;

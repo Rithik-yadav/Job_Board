@@ -16,32 +16,33 @@
         <div class="logo">Job-Board</div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#" class="employer">Employer</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="employer" class="employer">Employer</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container login">
         <div class="heading">Welcome Back! 👋</div>
-        <form class="form" action="">
+        <form class="form" action="/login" method="post">
             <div class="input-field">
-                <input required="" autocomplete="off" type="text" name="text" id="username" />
-                <label for="username">Username</label>
+                <input required="" autocomplete="off" type="text" name="username" id="username" />
+                <label for="username">username</label>
             </div>
 
             <div class="input-field">
-                <input required="" autocomplete="off" type="password" name="text" id="password" />
+                <input required="" autocomplete="off" type="password" name="password" id="password" />
                 <label for="password">Password</label>
             </div>
 
             <div class="btn-container">
                 <button class="btn">Login</button>
                 <div class="acc-text">
-                    Don't have an account? <span style="color: #0000ff; cursor: pointer;">Sign Up</span>
+                    Don't have an account? <a href="/signup"><span style="color: #0000ff; cursor: pointer;">Sign
+                            Up</span></a>
                 </div>
             </div>
         </form>
