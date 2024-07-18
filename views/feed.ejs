@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Feed | Job-Board</title>
+    <link rel="stylesheet" href="./styles/feed.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./images/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/jobs" style="color: #FA7070;">Jobs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <!-- Profile Photo Link -->
+                <a href="/profile">
+                    <img src="./images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="job-feed">
+            <div class="containerr">
+                <h1>Job Openings</h1>
+                <div class="filters">
+                    <label for="filter-location">Location:</label>
+                    <select id="filter-location">
+                        <option value="">All Locations</option>
+                        <option value="new-york">New York</option>
+                        <option value="san-francisco">San Francisco</option>
+                        <option value="los-angeles">Los Angeles</option>
+                        <!-- Add more options as needed -->
+                    </select>
+
+                    <label for="filter-category">Category:</label>
+                    <select id="filter-category">
+                        <option value="">All Categories</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="marketing">Marketing</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="job-cards-container">
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-details">
+                                <h2>Software Engineer</h2>
+                                <p class="job-company">Tech Solutions Inc.</p>
+                                <p class="job-location">San Francisco, CA</p>
+                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Nulla
+                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
+                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
+                            </div>
+                            <div class="job-apply">
+                                <button class="apply-button">Apply Now</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-details">
+                                <h2>Software Engineer</h2>
+                                <p class="job-company">Tech Solutions Inc.</p>
+                                <p class="job-location">San Francisco, CA</p>
+                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Nulla
+                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
+                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
+                            </div>
+                            <div class="job-apply">
+                                <button class="apply-button">Apply Now</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-details">
+                                <h2>Software Engineer</h2>
+                                <p class="job-company">Tech Solutions Inc.</p>
+                                <p class="job-location">San Francisco, CA</p>
+                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Nulla
+                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
+                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
+                            </div>
+                            <div class="job-apply">
+                                <button class="apply-button">Apply Now</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-details">
+                                <h2>Software Engineer</h2>
+                                <p class="job-company">Tech Solutions Inc.</p>
+                                <p class="job-location">San Francisco, CA</p>
+                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Nulla
+                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
+                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
+                            </div>
+                            <div class="job-apply">
+                                <button class="apply-button">Apply Now</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <script src="./js/feed.js"></script>
+</body>
+
+</html>

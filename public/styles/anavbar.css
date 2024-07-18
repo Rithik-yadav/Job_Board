@@ -1,0 +1,156 @@
+/* Navbar styles */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #007bff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+  position: relative; /* Added for dropdown */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+nav ul li a.employer {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a.employer:hover {
+  background-color: #0056b3;
+}
+
+/* Additional Styles for Enhanced Navbar */
+
+/* Logo Animation on Hover */
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navbar Links Animation on Hover */
+nav ul li a:hover {
+  transform: translateY(-3px);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  header {
+    padding: 0 10px;
+  }
+
+  .logo {
+    font-size: 1.5em;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #ffffff;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 999;
+  }
+
+  nav ul.open {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    position: relative;
+  }
+
+  nav ul li a {
+    padding: 15px 0;
+    width: 100%;
+    display: block;
+  }
+
+  nav ul li a:hover {
+    background-color: #f0f0f0;
+    transform: none;
+  }
+
+  /* Hamburger Menu Icon */
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-icon.open span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, 2px);
+  }
+
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
+}

@@ -1,0 +1,134 @@
+/* Reset and basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(120deg, #7cb8f9, #9e9bbd, #d5b2f9, #f4b7d3);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  font-family: "Nunito", sans-serif;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto; /* Adjust vertical margin as needed */
+  padding: 30px; /* Increase padding for better spacing */
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  position: relative; /* Ensure position for absolute elements */
+  overflow: hidden; /* Ensure the container wraps around its content */
+  background-color: #f5f7f8; /* Background color change */
+  animation: fadeIn 1s ease; /* Fade-in animation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+.content {
+  position: relative; /* Ensure content is above decorative box */
+  z-index: 1;
+}
+
+.container .heading {
+  font-size: 2.5rem; /* Larger heading size for impact */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #0034de; /* Change heading color as needed */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field {
+  position: relative;
+}
+
+.input-field input {
+  padding: 12px 18px; /* Increase padding for input fields */
+  font-size: 1.1rem; /* Slightly larger font size */
+  border-radius: 8px; /* Rounded corners for input fields */
+  border: solid 1px #ccc;
+  width: 100%;
+}
+
+.input-field label {
+  position: absolute;
+  color: #8d8d8d;
+  left: 18px; /* Adjust left padding for label */
+  top: 16px; /* Adjust top padding for label */
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+  transform: translateY(-28px) scale(0.8);
+  background-color: #fff;
+  padding: 0px 8px; /* Adjust padding for label */
+  color: #0034de;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 12px 24px; /* Increase padding for button */
+  font-size: 1.1rem; /* Slightly larger font size */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #0034de, #006eff);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+}
+
+.acc-text {
+  font-size: 1rem; /* Increase font size for account text */
+  text-align: center;
+}
+
+.acc-text span {
+  color: #0000ff;
+  cursor: pointer;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
