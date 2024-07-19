@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+</head>
+
+<body>
+    <header>
+        <h1>Job Listings</h1>
+    </header>
+
+    <main>
+        <% if (jobs.length> 0) { %>
+            <div class="job-list">
+                <% jobs.forEach(job=> { %>
+                    <div class="job-card">
+                        <h2>
+                            <%= job.title %>
+                        </h2>
+                        <p><strong>Description:</strong>
+                            <%= job.description %>
+                        </p>
+                        <p><strong>Location:</strong>
+                            <%= job.location %>
+                        </p>
+                        <p><strong>Mode:</strong>
+                            <%= job.mode %>
+                        </p>
+                        <p><strong>Employer:</strong>
+                            <%= job.company.companyName %>
+                        </p>
+                        <p><strong>Company Email:</strong>
+                            <%= job.company.email %>
+                        </p>
+                        <p><strong>Expiry Date:</strong>
+                            <%= job.expiryDate.toDateString() %>
+                        </p>
+                        <p><strong>Salary Range:</strong> $<%= job.salary.min %> - $<%= job.salary.max %>
+                        </p>
+                        <p><strong>Job Type:</strong>
+                            <%= job.jobType %>
+                        </p>
+                        <p><strong>Experience Required:</strong>
+                            <%= job.experience %>
+                        </p>
+                        <p><strong>Skills:</strong>
+                            <%= job.skills %>
+                        </p>
+                        <p><strong>Education:</strong>
+                            <%= job.education %>
+                        </p>
+                        <p><strong>Company Website:</strong> <a href="<%= job.companyWebsite %>" target="_blank">
+                                <%= job.companyWebsite %>
+                            </a></p>
+                        <p><strong>Contact Email:</strong>
+                            <%= job.contactEmail %>
+                        </p>
+                        <p><strong>Status:</strong>
+                            <%= job.status %>
+                        </p>
+                        <p><strong>Industry:</strong>
+                            <%= job.industry %>
+                        </p>
+                        <p><strong>Benefits:</strong>
+                            <%= job.benefits %>
+                        </p>
+                    </div>
+                    <% }) %>
+            </div>
+            <% } else { %>
+                <p>No job postings available.</p>
+                <% } %>
+    </main>
+</body>
+
+</html>

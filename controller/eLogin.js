@@ -24,7 +24,7 @@ exports.eLoginPost = async (req, res) => {
     cookie.setCookies(employer, res);
 
     // Redirect to appropriate employer dashboard
-    res.redirect("/"); // Replace with your employer dashboard route
+    res.redirect("/employer/addJob"); // Replace with your employer dashboard route
   } catch (error) {
     console.error(error);
     res.status(500).render("eLogin", {

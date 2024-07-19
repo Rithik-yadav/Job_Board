@@ -8,7 +8,7 @@ const employerSchema = new mongoose.Schema({
   location: { type: String },
   companySize: { type: String },
   description: { type: String },
-  jobsPosted: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
+  jobsPosted: [{ type: mongoose.Schema.Types.ObjectId, ref: "job" }],
 });
 
 module.exports =

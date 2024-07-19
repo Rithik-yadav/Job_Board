@@ -24,7 +24,7 @@ const jobSeekerSchema = new mongoose.Schema({
       description: String,
     },
   ],
-  appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
+  appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "job" }],
 });
 
 module.exports =

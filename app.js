@@ -9,6 +9,7 @@ const home = require("./controller/home");
 const profile = require("./controller/profile");
 const employer = require("./controller/eLogin");
 const employerSignup = require("./controller/eSignup");
+const job = require("./controller/eJobs");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +21,7 @@ app.set("view engine", "ejs");
 app.get("/", cookie.checkCookiesJobseeker, home.homeRender);
 
 //Feed
-app.get("/feed", cookie.checkCookiesJobseeker, feed.feedRender);
+// app.get("/feed", cookie.checkCookiesJobseeker, feed.feedRender);
 
 //profile
 app.get("/profile", cookie.checkCookiesJobseeker, profile.profileRender);
@@ -41,4 +42,10 @@ app.post("/employer/login", employer.eLoginPost);
 app.get("/employer/signup", employerSignup.eSignupRender);
 app.post("/employer/signup", employerSignup.eSignupPost);
 
+//job posting Employer side
+app.get("/employer/addJob", cookie.checkCookiesEmployer, job.addJob);
+app.post("/addJobPost", cookie.checkCookiesEmployer, job.addJobPost);
+
+//feed Job
+app.get("/feed", cookie.checkCookiesEmployer, job.jobFeed);
 module.exports = app;
