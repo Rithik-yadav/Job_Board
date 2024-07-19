@@ -23,15 +23,15 @@
             </ul>
         </nav>
     </header>
-    <form class="form">
+    <form class="form" method="post" action="/employer/login">
         <p class="title">Welcome Back!🙌🏻</p>
         <p class="message">Sign in to your employer account to manage your postings and applications.</p>
         <label>
-            <input class="input" type="email" placeholder="" required="">
+            <input class="input" type="email" placeholder="" required="" name="email">
             <span>Email Address</span>
         </label>
         <label>
-            <input class="input" type="password" placeholder="" required="">
+            <input class="input" type="password" placeholder="" required="" name="password">
             <span>Password</span>
         </label>
         <a href="#" class="forgot-password">Forgot Password?</a> <button class="submit" type="submit">Login</button>

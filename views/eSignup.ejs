@@ -23,28 +23,39 @@
             </ul>
         </nav>
     </header>
-    <form class="form">
+    <form class="form" method="post" action="/employer/signup">
         <p class="title">Level Up Your Hiring📈</p>
         <p class="message">Stop wasting time searching for talent, let them find you!🔍</p>
         <div class="flex">
             <label>
-                <input class="input" type="text" placeholder="" required="">
+                <input class="input" type="text" placeholder="" required="" name="companyName">
                 <span>Company Name</span>
             </label>
 
             <label>
-                <input class="input" type="text" placeholder="" required="">
+                <input class="input" type="text" placeholder="" required="" name="location">
                 <span>Location</span>
             </label>
         </div>
 
         <label>
-            <input class="input" type="email" placeholder="" required="">
+            <input class="input" type="email" placeholder="" required="" name="email">
             <span>Email</span>
+        </label>
+        <label>
+            <input class="input" type="text" placeholder="" required="" name="companySize">
+            <span>Company Size</span>
+        </label><label>
+            <input class="input" type="text" placeholder="" required="" name="industry">
+            <span>Industry</span>
+        </label>
+        <label>
+            <textarea class="input" placeholder="" required="" name="description"></textarea>
+            <span>Company Description</span>
         </label>
 
         <label>
-            <input class="input" id="password" type="password" placeholder="" required="">
+            <input class="input" id="password" type="password" placeholder="" required="" name="password">
             <span>Password</span>
         </label>
         <label>
