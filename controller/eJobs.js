@@ -67,7 +67,7 @@ exports.jobFeed = async (req, res) => {
   try {
     // Fetch all jobs along with their associated employer data
     const jobs = await Job.find().populate("company").exec();
-    res.render("JobsFeed", { jobs });
+    res.render("feed", { jobs });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error fetching job postings");

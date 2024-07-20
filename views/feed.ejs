@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Feed | Job-Board</title>
-    <link rel="stylesheet" href="./styles/feed.css">
-    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="/styles/feed.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./images/logo.png">
+    <link rel="icon" type="image/png" href="/images/logo.png">
 </head>
 
 <body>
     <header>
-        <div class="containerr">
+        <div class="container">
             <nav>
                 <div class="logo">Job-Board</div>
                 <ul>
@@ -24,7 +24,7 @@
                 </ul>
                 <!-- Profile Photo Link -->
                 <a href="/profile">
-                    <img src="./images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                    <img src="/images/avatar.avif" alt="Profile Photo" class="profile-photo">
                 </a>
             </nav>
         </div>
@@ -32,103 +32,109 @@
 
     <main>
         <section class="job-feed">
-            <div class="containerr">
+            <div class="container">
                 <h1>Job Openings</h1>
-                <div class="filters">
-                    <label for="filter-location">Location:</label>
-                    <select id="filter-location">
-                        <option value="">All Locations</option>
-                        <option value="new-york">New York</option>
-                        <option value="san-francisco">San Francisco</option>
-                        <option value="los-angeles">Los Angeles</option>
-                        <!-- Add more options as needed -->
-                    </select>
-
-                    <label for="filter-category">Category:</label>
-                    <select id="filter-category">
-                        <option value="">All Categories</option>
-                        <option value="tech">Technology</option>
-                        <option value="finance">Finance</option>
-                        <option value="marketing">Marketing</option>
-                        <!-- Add more options as needed -->
-                    </select>
+                <div class="page-wrapper">
+                    <div class="group">
+                        <div class="search-container">
+                            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                                <g>
+                                    <path
+                                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                    </path>
+                                </g>
+                            </svg>
+                            <input placeholder="🔍Search" type="search" class="input" id="search-input">
+                            <button id="search-button">Search</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="job-cards-container">
-                    <div class="job-cards">
-                        <div class="job-card">
-                            <div class="job-details">
-                                <h2>Software Engineer</h2>
-                                <p class="job-company">Tech Solutions Inc.</p>
-                                <p class="job-location">San Francisco, CA</p>
-                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nulla
-                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
-                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
-                            </div>
-                            <div class="job-apply">
-                                <button class="apply-button">Apply Now</button>
-                            </div>
-                        </div>
+                    <% if (jobs.length> 0) { %>
+                        <% jobs.forEach(job=> { %>
+                            <div class="job-card">
+                                <div class="job-details">
+                                    <h2 class="bold-heading">
+                                        <%= job.title %>
+                                    </h2>
+                                    <p class="job-company">
+                                        <strong>Company:</strong>
+                                        <%= job.company.companyName %>
+                                    </p>
+                                    <p class="job-location">
+                                        <strong>Location:</strong>
+                                        <%= job.location %>
+                                    </p>
+                                    <p class="job-type">
+                                        <strong>Job Type:</strong>
+                                        <%= job.mode %>
+                                    </p>
+                                    <p class="job-expiry">
+                                        <strong>Expiry Date:</strong>
+                                        <%= job.expiryDate.toDateString() %>
+                                    </p>
+                                    <p class="job-salary">
+                                        <strong>Salary Range:</strong> $<%= job.salary.min %> - $<%= job.salary.max %>
+                                    </p>
+                                    <p class="job-education">
+                                        <strong>Education:</strong>
+                                        <%= job.education %>
+                                    </p>
 
-                    </div>
-                    <div class="job-cards">
-                        <div class="job-card">
-                            <div class="job-details">
-                                <h2>Software Engineer</h2>
-                                <p class="job-company">Tech Solutions Inc.</p>
-                                <p class="job-location">San Francisco, CA</p>
-                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nulla
-                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
-                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
+                                    <p class="job-industry">
+                                        <strong>Industry:</strong>
+                                        <%= job.industry %>
+                                    </p>
+                                    <button class="more-info-button" onclick="toggleDetails(this)">More Info</button>
+                                    <div class="job-additional-info">
+                                        <p class="job-description">
+                                            <strong>Description:</strong>
+                                            <%= job.description %>
+                                        </p>
+                                        <p class="job-experience">
+                                            <strong>Experience Required:</strong>
+                                            <%= job.experience %>
+                                        </p>
+                                        <p class="job-status">
+                                            <strong>Status:</strong>
+                                            <%= job.status %>
+                                        </p>
+                                        <p class="job-skills">
+                                            <strong>Skills:</strong>
+                                            <%= job.skills %>
+                                        </p>
+                                        <p class="job-benefits">
+                                            <strong>Benefits:</strong>
+                                            <%= job.benefits %>
+                                        </p>
+                                        <p class="job-company-website">
+                                            <strong>Company Website:</strong> <a href="<%= job.companyWebsite %>"
+                                                target="_blank">
+                                                <%= job.companyWebsite %>
+                                            </a>
+                                        </p>
+                                        <p class="job-contact-email">
+                                            <strong>Contact Email:</strong>
+                                            <%= job.contactEmail %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="job-apply">
+                                    <a href="<%= job.applyUrl %>" class="apply-button">Apply Now</a>
+                                </div>
                             </div>
-                            <div class="job-apply">
-                                <button class="apply-button">Apply Now</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="job-cards">
-                        <div class="job-card">
-                            <div class="job-details">
-                                <h2>Software Engineer</h2>
-                                <p class="job-company">Tech Solutions Inc.</p>
-                                <p class="job-location">San Francisco, CA</p>
-                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nulla
-                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
-                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
-                            </div>
-                            <div class="job-apply">
-                                <button class="apply-button">Apply Now</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="job-cards">
-                        <div class="job-card">
-                            <div class="job-details">
-                                <h2>Software Engineer</h2>
-                                <p class="job-company">Tech Solutions Inc.</p>
-                                <p class="job-location">San Francisco, CA</p>
-                                <p class="job-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nulla
-                                    convallis libero sit amet lacus molestie, eget ultricies nunc fringilla.</p>
-                                <p class="job-type">Job Type: Hybrid</p> <!-- Added job type -->
-                            </div>
-                            <div class="job-apply">
-                                <button class="apply-button">Apply Now</button>
-                            </div>
-                        </div>
-
-                    </div>
+                            <% }) %>
+                                <% } else { %>
+                                    <p>No job postings available.</p>
+                                    <% } %>
                 </div>
-
             </div>
         </section>
-
     </main>
-    <script src="./js/feed.js"></script>
+    <script src="/js/feed.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>

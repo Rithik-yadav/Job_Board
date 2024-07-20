@@ -1,34 +1,74 @@
-// Wait for the DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-  const filterLocation = document.getElementById("filter-location");
-  const filterCategory = document.getElementById("filter-category");
-  const jobCards = document.querySelectorAll(".job-card");
+function toggleDetails(button) {
+  const jobCard = button.closest(".job-card");
+  const additionalInfo = jobCard.querySelector(".job-additional-info");
 
-  // Function to handle filtering
-  function filterJobs() {
-    const selectedLocation = filterLocation.value.toLowerCase();
-    const selectedCategory = filterCategory.value.toLowerCase();
-
-    jobCards.forEach((card) => {
-      const location = card
-        .querySelector(".job-location")
-        .textContent.toLowerCase();
-      const category = card
-        .querySelector(".job-category")
-        .textContent.toLowerCase();
-
-      if (
-        (selectedLocation === "" || location.includes(selectedLocation)) &&
-        (selectedCategory === "" || category.includes(selectedCategory))
-      ) {
-        card.style.display = "block"; // Show the card if it matches the filter
-      } else {
-        card.style.display = "none"; // Hide the card if it doesn't match the filter
-      }
-    });
+  if (
+    additionalInfo.style.display === "none" ||
+    additionalInfo.style.display === ""
+  ) {
+    additionalInfo.style.display = "block";
+    button.textContent = "Less Info";
+  } else {
+    additionalInfo.style.display = "none";
+    button.textContent = "More Info";
   }
+}
+document.getElementById("search-button").addEventListener("click", function () {
+  var query = document
+    .getElementById("search-input")
+    .value.toLowerCase()
+    .replace(/-/g, " ");
+  var jobCards = document.querySelectorAll(".job-card");
 
-  // Event listeners for filter changes
-  filterLocation.addEventListener("change", filterJobs);
-  filterCategory.addEventListener("change", filterJobs);
+  jobCards.forEach(function (card) {
+    var title = card.querySelector(".bold-heading").innerText.toLowerCase();
+    var company = card.querySelector(".job-company").innerText.toLowerCase();
+    var location = card.querySelector(".job-location").innerText.toLowerCase();
+    var type = card.querySelector(".job-type").innerText.toLowerCase();
+    var education = card
+      .querySelector(".job-education")
+      .innerText.toLowerCase();
+    var industry = card.querySelector(".job-industry").innerText.toLowerCase();
+
+    // Check salary range
+    var salaryRange =
+      card.querySelector(".job-salary")?.innerText.toLowerCase() || "";
+
+    // Check additional info details
+    var description =
+      card.querySelector(".job-description")?.innerText.toLowerCase() || "";
+    var experience =
+      card.querySelector(".job-experience")?.innerText.toLowerCase() || "";
+    var status =
+      card.querySelector(".job-status")?.innerText.toLowerCase() || "";
+    var skills =
+      card.querySelector(".job-skills")?.innerText.toLowerCase() || "";
+    var benefits =
+      card.querySelector(".job-benefits")?.innerText.toLowerCase() || "";
+    var companyWebsite =
+      card.querySelector(".job-company-website")?.innerText.toLowerCase() || "";
+    var contactEmail =
+      card.querySelector(".job-contact-email")?.innerText.toLowerCase() || "";
+
+    if (
+      title.includes(query) ||
+      company.includes(query) ||
+      location.includes(query) ||
+      type.includes(query) ||
+      education.includes(query) ||
+      industry.includes(query) ||
+      salaryRange.includes(query) ||
+      description.includes(query) ||
+      experience.includes(query) ||
+      status.includes(query) ||
+      skills.includes(query) ||
+      benefits.includes(query) ||
+      companyWebsite.includes(query) ||
+      contactEmail.includes(query)
+    ) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
 });
