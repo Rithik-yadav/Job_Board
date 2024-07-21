@@ -1,0 +1,208 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e0f2f1; /* Light background for the page */
+  color: #333; /* Dark text color for general text */
+  animation: fadeIn 1s ease-in; /* Animation for page fade-in */
+}
+
+/* Container styling for padding */
+.container {
+  padding: 60px 30px 30px; /* 60px padding at the top for the header, and 30px on the sides and bottom for more space */
+  box-sizing: border-box; /* Ensure padding is included in total width and height */
+}
+
+/* Heading styling */
+h1 {
+  color: #004d40; /* Dark green color for heading */
+  font-size: 2.5em;
+  padding-top: 60px; /* Padding to avoid overlap with fixed header */
+  margin: 0;
+  padding-bottom: 20px;
+  text-align: center; /* Center align heading */
+  animation: slideIn 1s ease-out; /* Animation for heading slide-in */
+}
+
+/* Form styling */
+form {
+  background: #ffffff; /* White background for the form */
+  padding: 25px; /* Increased padding */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  max-width: 900px; /* Increased max-width */
+  margin: 40px auto; /* Center the form with margin */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form elements */
+  animation: formFadeIn 1s ease-in; /* Animation for form fade-in */
+}
+
+/* Form label styling */
+label {
+  font-weight: bold;
+  color: #004d40; /* Dark green color for labels */
+  font-size: 1.2rem; /* Slightly larger font size */
+  margin-bottom: 6px; /* More space below labels */
+}
+
+/* Input and textarea styling */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  width: 100%; /* Full width for input fields */
+  padding: 14px; /* Increased padding */
+  border: 1px solid #007bff; /* Blue border for input fields */
+  border-radius: 8px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding in width */
+  font-size: 16px;
+  background-color: #f5faff; /* Very light blue background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #0056b3; /* Darker blue border on focus */
+  box-shadow: 0 0 8px rgba(0, 91, 171, 0.4); /* Shadow effect on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Readonly input styling */
+input[readonly] {
+  background-color: #e0e0e0; /* Light gray background for readonly fields */
+  cursor: not-allowed; /* Change cursor to indicate the field is not editable */
+  border-color: #ddd; /* Keep the border color consistent */
+  color: #333; /* Ensure text color is readable */
+}
+
+/* Button styling */
+button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: #171717;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 0.6rem;
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+button span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background-color: #0c66ed;
+  border-radius: 50%;
+  transition: 0.6s ease;
+}
+
+button span:nth-child(6) {
+  position: relative;
+}
+
+button span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+}
+
+button span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+
+button span:nth-child(3) {
+  transform: translate(-0.2em, 1.8em);
+}
+
+button span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+
+button span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+
+button:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(4);
+  transition: 1.5s ease;
+}
+
+button:hover {
+  background-color: #333; /* Darker shade on hover */
+}
+
+/* Back link styling */
+a.back {
+  margin: 20px;
+  display: inline-block;
+  padding: 12px 24px; /* Increased padding */
+  margin-top: 30px; /* Increased margin */
+  background-color: #004d40; /* Background color for the back button */
+  color: #fff8f3; /* Text color */
+  text-decoration: none;
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1.2rem; /* Larger font size */
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* Center align text */
+  animation: linkFadeIn 1s ease-in; /* Animation for link fade-in */
+}
+
+a.back:hover {
+  background-color: #002e2b; /* Darker shade for hover */
+  color: #e0e0e0; /* Lighter color on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes linkFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

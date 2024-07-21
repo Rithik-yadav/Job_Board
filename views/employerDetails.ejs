@@ -8,57 +8,88 @@
     <title>
         <%= employer.companyName %> Details
     </title>
-    <link rel="stylesheet" href="./styles/employer.css">
+    <link rel="stylesheet" href="/styles/employerDetails.css">
+    <link rel="stylesheet" href="/styles/adminNavbar.css">
 </head>
 
 <body>
-    <h1>
-        <%= employer.companyName %>
-    </h1>
-    <p>Email: <%= employer.email %>
-    </p>
-    <p>Industry: <%= employer.industry %>
-    </p>
-    <p>Location: <%= employer.location %>
-    </p>
-    <p>Company Size: <%= employer.companySize %>
-    </p>
-    <p>Description: <%= employer.description %>
-    </p>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                        <li><a href="/admin/employers">Employers</a></li>
+                        <li><a href="/admin/jobs">Jobs</a></li>
+                        <li><a href="/admin/settings">Settings</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>
+            <%= employer.companyName %>
+        </h1>
+        <p><strong>Email:</strong>
+            <%= employer.email %>
+        </p>
+        <p><strong>Industry:</strong>
+            <%= employer.industry %>
+        </p>
+        <p><strong>Location:</strong>
+            <%= employer.location %>
+        </p>
+        <p><strong> Company Size:</strong>
+            <%= employer.companySize %>
+        </p>
+        <p><Strong> Description: </Strong>
+            <%= employer.description %>
+        </p>
 
-    <h2>Jobs Posted</h2>
-    <ul>
-        <% employer.jobsPosted.forEach(job=> { %>
-            <li>
-                <%= job.title %>
-            </li>
-            <% }) %>
-    </ul>
+        <h2>Jobs Posted</h2>
+        <ul>
+            <% employer.jobsPosted.forEach(job=> { %>
+                <li>
+                    <%= job.title %>
+                </li>
+                <% }) %>
+        </ul>
 
-    <h2>Edit Employer</h2>
-    <form action="/admin/employers/<%= employer._id %>/edit" method="post">
-        <label for="companyName">Company Name</label>
-        <input type="text" id="companyName" name="companyName" value="<%= employer.companyName %>">
+        <h2>Edit Employer</h2>
+        <form action="/admin/employers/<%= employer._id %>/edit" method="post">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" value="<%= employer.companyName %>">
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="<%= employer.email %>">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<%= employer.email %>">
 
-        <label for="industry">Industry</label>
-        <input type="text" id="industry" name="industry" value="<%= employer.industry %>">
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry" value="<%= employer.industry %>">
 
-        <label for="location">Location</label>
-        <input type="text" id="location" name="location" value="<%= employer.location %>">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" value="<%= employer.location %>">
 
-        <label for="companySize">Company Size</label>
-        <input type="text" id="companySize" name="companySize" value="<%= employer.companySize %>">
+            <label for="companySize">Company Size</label>
+            <input type="text" id="companySize" name="companySize" value="<%= employer.companySize %>">
 
-        <label for="description">Description</label>
-        <textarea id="description" name="description"><%= employer.description %></textarea>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"><%= employer.description %></textarea>
 
-        <button type="submit">Update</button>
-    </form>
+            <button type="submit">
+                <span class="circle1"></span>
+                <span class="circle2"></span>
+                <span class="circle3"></span>
+                <span class="circle4"></span>
+                <span class="circle5"></span>
+                <span class="text">Update</span>
+            </button>
+        </form>
 
-    <a href="/admin/employers">Back to Employers</a>
+        <a href="/admin/employers" class="back">🔙Back to Employers</a>
+    </div>
 </body>
 
 </html>

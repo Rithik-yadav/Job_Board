@@ -6,11 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Job</title>
-    <link rel="stylesheet" href="/path/to/your/css/style.css">
+    <link rel="stylesheet" href="/styles/editJobAdmin.css">
+    <link rel="stylesheet" href="/styles/adminNavbar.css">
 </head>
 
 <body>
-    <h1>Edit Job</h1>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                        <li><a href="/admin/employers">Employers</a></li>
+                        <li><a href="/admin/jobs">Jobs</a></li>
+                        <li><a href="/admin/settings">Settings</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <h1>Edit Job📝</h1>
     <form action="/admin/jobs/<%= job._id %>/edit" method="post">
         <label for="title">Job Title</label>
         <input type="text" id="title" name="title" value="<%= job.title %>" required>
@@ -25,7 +42,7 @@
         <input type="text" id="mode" name="mode" value="<%= job.mode %>">
 
         <label for="company">Company ID</label>
-        <input type="text" id="company" name="company" value="<%= job.company %>" required>
+        <input type="text" id="company" name="company" value="<%= job.company %>" required readonly>
 
         <label for="salary">Salary (Min and Max)</label>
         <input type="number" id="salaryMin" name="salary[min]" value="<%= job.salary.min %>">
@@ -54,11 +71,17 @@
 
         <label for="benefits">Benefits</label>
         <input type="text" id="benefits" name="benefits" value="<%= job.benefits.join(', ') %>">
-
-        <button type="submit">Update Job</button>
+        <button type="submit">
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span class="circle4"></span>
+            <span class="circle5"></span>
+            <span class="text">Submit</span>
+        </button>
     </form>
 
-    <a href="/admin/jobs/<%= job._id %>">Back to Job Details</a>
+    <a href="/admin/jobs/<%= job._id %>" class="back">👈🏻 Back to Job Details</a>
 </body>
 
 </html>
