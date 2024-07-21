@@ -1,0 +1,26 @@
+<!-- views/admin/employers.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employers</title>
+    <link rel="stylesheet" href="/styles/employers.css">
+</head>
+
+<body>
+    <h1>Employers</h1>
+    <ul>
+        <% employers.forEach(employer=> { %>
+            <li>
+                <a href="/admin/employers/<%= employer._id %>">
+                    <%= employer.companyName %>
+                </a>
+            </li>
+            <% }) %>
+    </ul>
+    <a href="/\admin/dashboard">Back to Dashboard</a>
+</body>
+
+</html>

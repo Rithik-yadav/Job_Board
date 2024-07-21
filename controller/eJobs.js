@@ -1,5 +1,6 @@
 const Job = require("../models/Job");
-const employer = require("../models/Employer");
+const Employer = require("../models/Employer");
+
 exports.addJob = (req, res) => {
   res.render("addJob");
 };
@@ -10,7 +11,6 @@ exports.addJobPost = async (req, res) => {
     description,
     location,
     mode,
-    company,
     expiryDate,
     salary,
     jobType,
@@ -23,8 +23,15 @@ exports.addJobPost = async (req, res) => {
     industry,
     benefits,
   } = req.body;
-  let employerId = req.user._id;
+
   try {
+    // Ensure req.user is populated correctly
+    if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const employerId = req.user._id;
+
     // Create a new job post
     const newJobPost = new Job({
       title,
@@ -47,14 +54,20 @@ exports.addJobPost = async (req, res) => {
 
     // Save the job post to the database
     await newJobPost.save();
-    req.user.jobsPosted.push(newJobPost._id);
-    await req.user.save();
-    res.status(400).send(
+
+    // Update employer's jobsPosted list
+    const employer = await Employer.findById(employerId);
+    if (!employer) {
+      throw new Error("Employer not found");
+    }
+    employer.jobsPosted.push(newJobPost._id);
+    await employer.save();
+
+    res.status(200).send(
       `<script>alert("Job Posted Successfully");</script>
        <meta http-equiv="refresh" content="0.1;url=/employer/addJob">`
     );
   } catch (error) {
-    // Handle any errors
     console.error(error);
     res.status(500).json({
       message: "Error creating job post",
@@ -67,6 +80,9 @@ exports.jobFeed = async (req, res) => {
   try {
     // Fetch all jobs along with their associated employer data
     const jobs = await Job.find().populate("company").exec();
+
+    // Debugging: Check the jobs array to ensure that company data is populated
+
     res.render("feed", { jobs });
   } catch (error) {
     console.error(error);

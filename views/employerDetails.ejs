@@ -1,0 +1,64 @@
+<!-- views/admin/employerDetails.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= employer.companyName %> Details
+    </title>
+    <link rel="stylesheet" href="./styles/employer.css">
+</head>
+
+<body>
+    <h1>
+        <%= employer.companyName %>
+    </h1>
+    <p>Email: <%= employer.email %>
+    </p>
+    <p>Industry: <%= employer.industry %>
+    </p>
+    <p>Location: <%= employer.location %>
+    </p>
+    <p>Company Size: <%= employer.companySize %>
+    </p>
+    <p>Description: <%= employer.description %>
+    </p>
+
+    <h2>Jobs Posted</h2>
+    <ul>
+        <% employer.jobsPosted.forEach(job=> { %>
+            <li>
+                <%= job.title %>
+            </li>
+            <% }) %>
+    </ul>
+
+    <h2>Edit Employer</h2>
+    <form action="/admin/employers/<%= employer._id %>/edit" method="post">
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" name="companyName" value="<%= employer.companyName %>">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<%= employer.email %>">
+
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" name="industry" value="<%= employer.industry %>">
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="<%= employer.location %>">
+
+        <label for="companySize">Company Size</label>
+        <input type="text" id="companySize" name="companySize" value="<%= employer.companySize %>">
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"><%= employer.description %></textarea>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/admin/employers">Back to Employers</a>
+</body>
+
+</html>

@@ -31,42 +31,65 @@
                             <%= job.mode %>
                         </p>
                         <p><strong>Employer:</strong>
-                            <%= job.company.companyName %>
+                            <%= job.company?.companyName || 'N/A' %>
                         </p>
                         <p><strong>Company Email:</strong>
-                            <%= job.company.email %>
+                            <%= job.company?.email || 'N/A' %>
                         </p>
                         <p><strong>Expiry Date:</strong>
-                            <%= job.expiryDate.toDateString() %>
+                            <%= job.expiryDate ? job.expiryDate.toDateString() : 'N/A' %>
                         </p>
-                        <p><strong>Salary Range:</strong> $<%= job.salary.min %> - $<%= job.salary.max %>
+                        <p><strong>Salary Range:</strong> $<%= job.salary?.min || 'N/A' %> - $<%= job.salary?.max
+                                    || 'N/A' %>
                         </p>
                         <p><strong>Job Type:</strong>
-                            <%= job.jobType %>
+                            <%= job.jobType || 'N/A' %>
                         </p>
                         <p><strong>Experience Required:</strong>
-                            <%= job.experience %>
+                            <%= job.experience || 'N/A' %>
                         </p>
                         <p><strong>Skills:</strong>
-                            <%= job.skills %>
+                        <ul>
+                            <% job.skills && job.skills.length> 0 ? job.skills.forEach(skill => { %>
+                                <li>
+                                    <%= skill %>
+                                </li>
+                                <% }) : %>
+                                    <li>N/A</li>
+                                    <% } %>
+                        </ul>
                         </p>
                         <p><strong>Education:</strong>
-                            <%= job.education %>
+                            <%= job.education || 'N/A' %>
                         </p>
-                        <p><strong>Company Website:</strong> <a href="<%= job.companyWebsite %>" target="_blank">
-                                <%= job.companyWebsite %>
-                            </a></p>
+                        <p><strong>Company Website:</strong>
+                            <% if (job.companyWebsite) { %>
+                                <a href="<%= job.companyWebsite %>" target="_blank">
+                                    <%= job.companyWebsite %>
+                                </a>
+                                <% } else { %>
+                                    N/A
+                                    <% } %>
+                        </p>
                         <p><strong>Contact Email:</strong>
-                            <%= job.contactEmail %>
+                            <%= job.contactEmail || 'N/A' %>
                         </p>
                         <p><strong>Status:</strong>
                             <%= job.status %>
                         </p>
                         <p><strong>Industry:</strong>
-                            <%= job.industry %>
+                            <%= job.industry || 'N/A' %>
                         </p>
                         <p><strong>Benefits:</strong>
-                            <%= job.benefits %>
+                        <ul>
+                            <% job.benefits && job.benefits.length> 0 ? job.benefits.forEach(benefit => { %>
+                                <li>
+                                    <%= benefit %>
+                                </li>
+                                <% }) : %>
+                                    <li>N/A</li>
+                                    <% } %>
+                        </ul>
                         </p>
                     </div>
                     <% }) %>

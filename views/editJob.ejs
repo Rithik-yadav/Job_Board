@@ -1,0 +1,64 @@
+<!-- views/admin/editJob.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+    <link rel="stylesheet" href="/path/to/your/css/style.css">
+</head>
+
+<body>
+    <h1>Edit Job</h1>
+    <form action="/admin/jobs/<%= job._id %>/edit" method="post">
+        <label for="title">Job Title</label>
+        <input type="text" id="title" name="title" value="<%= job.title %>" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required><%= job.description %></textarea>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="<%= job.location %>">
+
+        <label for="mode">Job Mode</label>
+        <input type="text" id="mode" name="mode" value="<%= job.mode %>">
+
+        <label for="company">Company ID</label>
+        <input type="text" id="company" name="company" value="<%= job.company %>" required>
+
+        <label for="salary">Salary (Min and Max)</label>
+        <input type="number" id="salaryMin" name="salary[min]" value="<%= job.salary.min %>">
+        <input type="number" id="salaryMax" name="salary[max]" value="<%= job.salary.max %>">
+
+        <label for="jobType">Job Type</label>
+        <input type="text" id="jobType" name="jobType" value="<%= job.jobType %>">
+
+        <label for="experience">Experience</label>
+        <input type="text" id="experience" name="experience" value="<%= job.experience %>">
+
+        <label for="skills">Skills</label>
+        <input type="text" id="skills" name="skills" value="<%= job.skills.join(', ') %>">
+
+        <label for="education">Education</label>
+        <input type="text" id="education" name="education" value="<%= job.education %>">
+
+        <label for="companyWebsite">Company Website</label>
+        <input type="text" id="companyWebsite" name="companyWebsite" value="<%= job.companyWebsite %>">
+
+        <label for="contactEmail">Contact Email</label>
+        <input type="email" id="contactEmail" name="contactEmail" value="<%= job.contactEmail %>">
+
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" name="industry" value="<%= job.industry %>">
+
+        <label for="benefits">Benefits</label>
+        <input type="text" id="benefits" name="benefits" value="<%= job.benefits.join(', ') %>">
+
+        <button type="submit">Update Job</button>
+    </form>
+
+    <a href="/admin/jobs/<%= job._id %>">Back to Job Details</a>
+</body>
+
+</html>

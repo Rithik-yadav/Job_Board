@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/adminNavbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                        <li><a href="/admin/employers">Employers</a></li>
+                        <li><a href="/admin/jobs">Jobs</a></li>
+                        <li><a href="/admin/settings">Settings</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Admin Dashboard</h1>
+        <div class="dashboard-stats">
+            <div class="stat">
+                <h2>Total Employers</h2>
+                <p>
+                    <%= totalEmployers %>
+                </p>
+            </div>
+            <div class="stat">
+                <h2>Total Jobs</h2>
+                <p>
+                    <%= totalJobs %>
+                </p>
+            </div>
+            <div class="stat">
+                <h2>Total Job Seekers</h2>
+                <p>
+                    <%= totalJobSeekers %>
+                </p>
+            </div>
+        </div>
+
+        <div class="recent-items-container">
+            <div class="recent-items">
+                <h2>Recent Jobs</h2>
+                <div class="recent-items-grid">
+                    <% recentJobs.forEach(job=> { %>
+                        <div class="recent-item">
+                            <div class="job-info">
+                                <span>
+                                    <%= job.title %> - <%= job.postedDate.toDateString() %>
+                                </span>
+                                <div class="item-actions">
+                                    <a href="/admin/jobs/<%= job._id %>" class="edit-button">Edit</a>
+                                    <form action="/admin/jobs/<%= job._id %>/delete" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this job?');">
+                                        <button class="button" type="submit">
+                                            <span class="button__text">Delete</span>
+                                            <span class="button__icon"><svg class="svg" height="512"
+                                                    viewBox="0 0 512 512" width="512"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <title></title>
+                                                    <path
+                                                        d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
+                                                    </path>
+                                                    <line
+                                                        style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+                                                        x1="80" x2="432" y1="112" y2="112"></line>
+                                                    <path
+                                                        d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
+                                                    </path>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="256" x2="256" y1="176" y2="400"></line>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="184" x2="192" y1="176" y2="400"></line>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="328" x2="320" y1="176" y2="400"></line>
+                                                </svg></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+
+            <div class="recent-items">
+                <h2>Recent Employers</h2>
+                <div class="recent-items-grid">
+                    <% recentEmployers.forEach(employer=> { %>
+                        <div class="recent-item">
+                            <div class="employer-info">
+                                <span>
+                                    <%= employer.companyName %> - <%= employer.industry %>
+                                </span>
+                                <div class="item-actions">
+                                    <a href="/admin/employers/<%= employer._id %>" class="edit-button">Edit</a>
+                                    <form action="/admin/employers/<%= employer._id %>/delete" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this employer?');">
+                                        <button class="button" type="submit">
+                                            <span class="button__text">Delete</span>
+                                            <span class="button__icon"><svg class="svg" height="512"
+                                                    viewBox="0 0 512 512" width="512"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <title></title>
+                                                    <path
+                                                        d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
+                                                    </path>
+                                                    <line
+                                                        style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
+                                                        x1="80" x2="432" y1="112" y2="112"></line>
+                                                    <path
+                                                        d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
+                                                    </path>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="256" x2="256" y1="176" y2="400"></line>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="184" x2="192" y1="176" y2="400"></line>
+                                                    <line
+                                                        style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+                                                        x1="328" x2="320" y1="176" y2="400"></line>
+                                                </svg></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+
+            <div class="recent-items">
+                <h2>Recent Job Seekers</h2>
+                <div class="recent-items-grid">
+                    <% recentJobSeekers.forEach(seeker=> { %>
+                        <div class="recent-item">
+                            <div class="seeker-info">
+                                <span>
+                                    <%= seeker.name %> - <%= seeker.username %>
+                                </span>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

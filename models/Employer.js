@@ -11,5 +11,6 @@ const employerSchema = new mongoose.Schema({
   jobsPosted: [{ type: mongoose.Schema.Types.ObjectId, ref: "job" }],
 });
 
+// Ensure the model name is capitalized and consistent
 module.exports =
-  mongoose.models.employer || mongoose.model("employer", employerSchema);
+  mongoose.models.Employer || mongoose.model("Employer", employerSchema);

@@ -10,6 +10,7 @@ const profile = require("./controller/profile");
 const employer = require("./controller/eLogin");
 const employerSignup = require("./controller/eSignup");
 const job = require("./controller/eJobs");
+const admin = require("./controller/admin");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,9 +20,6 @@ app.set("view engine", "ejs");
 
 //Home
 app.get("/", cookie.checkCookiesJobseeker, home.homeRender);
-
-//Feed
-// app.get("/feed", cookie.checkCookiesJobseeker, feed.feedRender);
 
 //profile
 app.get("/profile", cookie.checkCookiesJobseeker, profile.profileRender);
@@ -48,4 +46,22 @@ app.post("/addJobPost", cookie.checkCookiesEmployer, job.addJobPost);
 
 //feed Job
 app.get("/feed", cookie.checkCookiesEmployer, job.jobFeed);
+
+//admin
+app.get("/admin/dashboard", admin.dashboard);
+app.get("/admin/employers", admin.listEmployers);
+app.get("/admin/employers/:id", admin.employerDetails);
+app.post("/admin/employers/:id/edit", admin.editEmployer);
+// server/routes/admin.js
+app.post("/admin/employers/:id/delete", admin.deleteEmployer);
+
+//asdmin jobs
+// server/routes/admin.js
+// server/routes/admin.js
+app.get("/admin/jobs/:id/edit", admin.renderEditJobForm);
+app.post("/admin/jobs/:id/edit", admin.updateJob);
+app.post("/admin/jobs/:id/delete", admin.deleteJob);
+app.get("/admin/jobs/:id", admin.jobDetails);
+app.get("/admin/jobs", admin.listJobs);
+
 module.exports = app;
