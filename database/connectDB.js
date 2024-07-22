@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 
 const connectDB = () => {
   mongoose
-    .connect("mongodb://127.0.0.1:27017", { dbName: "jobBoard" })
+    .connect(
+      "mongodb+srv://RithikAdmin:1234@job-board.rz6nxuj.mongodb.net/?retryWrites=true&w=majority&appName=Job-Board",
+      { dbName: "jobBoard" }
+    )
     .then(() => {
       console.log("MongoDB Connected...");
     })
