@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Form</title>
-    <link rel="stylesheet" href="/styles/addJob.css">
-    <link rel="stylesheet" href="/styles/anavbar.css">
+    <link rel="stylesheet" href="/styles/employer/employerNavBar.css">
+    <link rel="stylesheet" href="/styles/employer/addJob.css">
+
     <link rel="icon" type="image/png" href="/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -24,64 +25,105 @@
                 </ul>
                 <!-- Profile Photo Link -->
                 <a href="/profile">
-                    <img src="./images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                    <img src="/images/avatar.avif" alt="Profile Photo" class="profile-photo">
                 </a>
             </nav>
         </div>
     </header>
     <h1>Job Listing Form</h1>
-    <form action="/addJobPost" method="POST" class="job-form">
-        <label for="title">Job Title:</label>
-        <input type="text" id="title" name="title" required>
+    <div class="job-form-container">
+        <form action="/addJobPost" method="POST" class="job-form">
+            <div class="form-group">
+                <label for="title">Job Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
+            </div>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location">
+            <div class="form-group">
+                <label for="mode">Mode (e.g., Full-time, Part-time):</label>
+                <input type="text" id="mode" name="mode">
+            </div>
 
-        <label for="mode">Mode (e.g., Full-time, Part-time):</label>
-        <input type="text" id="mode" name="mode">
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="date" id="expiryDate" name="expiryDate">
+            </div>
 
+            <div class="form-group">
+                <label for="minSalary">Minimum Salary:</label>
+                <input type="number" id="minSalary" name="salary[min]">
+            </div>
 
-        <label for="expiryDate">Expiry Date:</label>
-        <input type="date" id="expiryDate" name="expiryDate">
+            <div class="form-group">
+                <label for="maxSalary">Maximum Salary:</label>
+                <input type="number" id="maxSalary" name="salary[max]">
+            </div>
 
-        <label for="minSalary">Minimum Salary:</label>
-        <input type="number" id="minSalary" name="salary[min]">
+            <div class="form-group">
+                <label for="jobType">Job Type:</label>
+                <input type="text" id="jobType" name="jobType">
+            </div>
 
-        <label for="maxSalary">Maximum Salary:</label>
-        <input type="number" id="maxSalary" name="salary[max]">
+            <div class="form-group">
+                <label for="experience">Required Experience:</label>
+                <input type="text" id="experience" name="experience">
+            </div>
 
-        <label for="jobType">Job Type:</label>
-        <input type="text" id="jobType" name="jobType">
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" name="skills">
+            </div>
 
-        <label for="experience">Required Experience:</label>
-        <input type="text" id="experience" name="experience">
+            <div class="form-group">
+                <label for="education">Education Requirements:</label>
+                <input type="text" id="education" name="education">
+            </div>
 
-        <label for="skills">Skills:</label>
-        <input type="text" id="skills" name="skills">
+            <div class="form-group">
+                <label for="companyWebsite">Company Website:</label>
+                <input type="url" id="companyWebsite" name="companyWebsite">
+            </div>
 
-        <label for="education">Education Requirements:</label>
-        <input type="text" id="education" name="education">
+            <div class="form-group">
+                <label for="contactEmail">Contact Email:</label>
+                <input type="email" id="contactEmail" name="contactEmail">
+            </div>
 
-        <label for="companyWebsite">Company Website:</label>
-        <input type="url" id="companyWebsite" name="companyWebsite">
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" id="status" name="status">
+            </div>
 
-        <label for="contactEmail">Contact Email:</label>
-        <input type="email" id="contactEmail" name="contactEmail">
+            <div class="form-group">
+                <label for="industry">Industry:</label>
+                <input type="text" id="industry" name="industry">
+            </div>
 
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status">
+            <div class="form-group">
+                <label for="benefits">Benefits:</label>
+                <input type="text" id="benefits" name="benefits">
+            </div>
 
-        <label for="industry">Industry:</label>
-        <input type="text" id="industry" name="industry">
+            <!-- Moved description field to the end and assigned class description -->
+            <div class="form-group description">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
 
-        <label for="benefits">Benefits:</label>
-        <input type="text" id="benefits" name="benefits">
-
-        <button type="submit">Submit Job</button>
-    </form>
+            <button type="submit">
+                <span class="circle1"></span>
+                <span class="circle2"></span>
+                <span class="circle3"></span>
+                <span class="circle4"></span>
+                <span class="circle5"></span>
+                <span class="text">Submit</span>
+            </button>
+        </form>
+    </div>
 </body>
 
 </html>

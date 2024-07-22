@@ -1,0 +1,167 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General body styles */
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #e7f6f2; /* Light green */
+  color: #2c3333; /* Dark teal */
+  padding: 20px;
+  margin-top: 80px; /* Leave space for the header */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Form title */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3333; /* Dark teal */
+  text-align: center;
+}
+
+/* Job form container */
+.job-form-container {
+  width: 100%;
+  max-width: 1200px; /* Adjust the max-width to suit larger forms */
+  background-color: #ffffff; /* White background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Job form styles */
+.job-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between input groups */
+}
+
+/* Form elements styles */
+.job-form .form-group {
+  flex: 1; /* Allows elements to grow and shrink */
+  min-width: 220px; /* Minimum width for inputs */
+}
+
+/* Special case for the description field */
+.job-form .form-group.description {
+  flex: 0 0 100%; /* Make description take full width */
+}
+
+/* Label styles */
+.job-form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #2c3333; /* Dark teal */
+  display: block;
+}
+
+/* Input and Textarea styles */
+.job-form input,
+.job-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #395b64; /* Medium teal */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Textarea specific styles */
+.job-form textarea {
+  resize: vertical;
+}
+
+/* Button styling */
+button {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-weight: bold;
+  color: white;
+  background-color: #171717;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 0.6rem;
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease-out;
+}
+
+button span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background-color: #0c66ed;
+  border-radius: 50%;
+  transition: 0.6s ease;
+}
+
+button span:nth-child(6) {
+  position: relative;
+}
+
+button span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+}
+
+button span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+
+button span:nth-child(3) {
+  transform: translate(-0.2em, 1.8em);
+}
+
+button span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+
+button span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+
+button:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(4);
+  transition: 1.5s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #333; /* Darker shade on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .job-form-container {
+    padding: 15px;
+  }
+
+  .job-form {
+    flex-direction: column;
+  }
+
+  .job-form .form-group {
+    min-width: unset;
+  }
+
+  .job-form input,
+  .job-form textarea {
+    font-size: 14px;
+  }
+
+  .job-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

@@ -5,23 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-    <link rel="stylesheet" href="./styles/profile.css">
-    <link rel="stylesheet" href="./styles/anavbar.css">
+    <link rel="stylesheet" href="./styles/jobseeker/profile.css">
+    <link rel="stylesheet" href="./styles/jobseeker/navbar.css">
     <link rel="icon" type="image/png" href="./images/logo.png">
 </head>
 
 <body>
     <header>
-        <div class="logo">Job-Board</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#" class="employer">Employer</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job/feed" style="color: #FA7070;">Jobs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <!-- Profile Photo Link -->
+                <a href="/profile">
+                    <img src="/images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                </a>
+            </nav>
+        </div>
     </header>
     <div class="profile-container">
         <div class="profile-header">

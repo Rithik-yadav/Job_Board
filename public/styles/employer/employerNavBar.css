@@ -1,0 +1,108 @@
+/* Navbar styling */
+nav {
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #0b2447;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Navbar logo */
+nav .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a5d7e8;
+  transition: color 0.3s ease;
+}
+
+nav .logo:hover {
+  color: #576cbc;
+}
+
+/* Navbar links */
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #a5d7e8;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #576cbc;
+  transform: translateY(-3px);
+}
+
+nav ul li a.active {
+  color: #a5d7e8;
+  border-bottom: 3px solid #a5d7e8;
+}
+
+/* Profile photo styling */
+nav .profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #19376d;
+  transition: border-color 0.3s ease;
+}
+
+nav .profile-photo:hover {
+  border-color: #576cbc;
+}
+
+/* Mobile responsive design */
+@media (max-width: 675px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: #0b2447;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  nav ul li a:hover {
+    background-color: #19376d;
+  }
+
+  .profile-photo {
+    width: 45px;
+    height: 45px;
+  }
+}

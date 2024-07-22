@@ -44,7 +44,7 @@ exports.checkCookiesEmployer = async (req, res, next) => {
   if (!token) {
     return res.status(500).send(
       `<script>alert("You are not authorised for this");</script>
-    <meta http-equiv="refresh" content="0.1;url=employer/login">`
+    <meta http-equiv="refresh" content="0.1;url=/login">`
     );
   }
   const decode = jwt.verify(token, "Rithik");
