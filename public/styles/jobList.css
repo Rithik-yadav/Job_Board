@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #eeeeee;
+  color: #201e43;
+}
+
+main {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #134b70;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+th,
+td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #508c9b;
+  font-size: 18px;
+}
+
+th {
+  background-color: #134b70;
+  color: #eeeeee;
+  font-weight: bold;
+}
+
+td {
+  background-color: #ffffff;
+  color: #201e43;
+}
+
+td.job-title {
+  padding-left: 25px;
+}
+
+tbody tr {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #d6e8e3;
+  color: #201e43;
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 16px;
+  }
+
+  th,
+  td {
+    padding: 15px;
+  }
+
+  main {
+    padding: 10px;
+  }
+}

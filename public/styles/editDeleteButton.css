@@ -1,0 +1,132 @@
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Edit Button style */
+.edit-button {
+  margin: 10px;
+  border-radius: 10px;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #3b9fcb; /* Updated border color */
+  background-color: #2a7ab6; /* Updated background color */
+  overflow: hidden;
+}
+
+.edit-button,
+.edit-button__icon,
+.edit-button__text {
+  transition: all 0.3s;
+}
+
+.edit-button .edit-button__text {
+  color: #fff;
+  font-weight: 600;
+  margin-left: 20px; /* Adjust margin to position text */
+}
+
+.edit-button .edit-button__icon {
+  position: absolute;
+  right: 0; /* Start icon from the right */
+  height: 100%;
+  width: 40px;
+  background-color: #3b9fcb; /* Updated background color for icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.edit-button .svg {
+  width: 20px;
+}
+
+.edit-button:hover {
+  background: #1e5a8b; /* Darker blue on hover */
+}
+
+.edit-button:hover .edit-button__text {
+  color: transparent;
+}
+
+.edit-button:hover .edit-button__icon {
+  right: 0;
+  width: 100%; /* Make the icon cover the entire button */
+}
+
+.edit-button:active .edit-button__icon {
+  background-color: #1b4f75; /* Darker background on active */
+}
+
+.edit-button:active {
+  border: 1px solid #1b4f75; /* Darker border on active */
+}
+
+/* Delete Button style */
+.delete-button {
+  margin: 10px;
+  border-radius: 10px;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d94f4f; /* Updated border color */
+  background-color: #e03e3e; /* Updated background color */
+  overflow: hidden;
+}
+
+.delete-button,
+.delete-button__icon,
+.delete-button__text {
+  transition: all 0.3s;
+}
+
+.delete-button .delete-button__text {
+  color: #fff;
+  font-weight: 600;
+  margin-left: 20px; /* Adjust margin to position text */
+}
+
+.delete-button .delete-button__icon {
+  position: absolute;
+  right: 0; /* Start icon from the right */
+  height: 100%;
+  width: 40px;
+  background-color: #d94f4f; /* Updated background color for icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.delete-button .svg {
+  width: 20px;
+}
+
+.delete-button:hover {
+  background: #c13b3b; /* Darker red on hover */
+}
+
+.delete-button:hover .delete-button__text {
+  color: transparent;
+}
+
+.delete-button:hover .delete-button__icon {
+  right: 0;
+  width: 100%; /* Make the icon cover the entire button */
+}
+
+.delete-button:active .delete-button__icon {
+  background-color: #a32b2b; /* Darker red on active */
+}
+
+.delete-button:active {
+  border: 1px solid #a32b2b; /* Darker border on active */
+}

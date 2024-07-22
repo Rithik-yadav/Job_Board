@@ -1,3 +1,3 @@
 exports.homeRender = (req, res) => {
-  res.render("home");
+  res.render("jobseeker/home");
 };

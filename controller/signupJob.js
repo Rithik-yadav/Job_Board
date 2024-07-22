@@ -2,7 +2,7 @@ const jobSeeker = require("../models/JobSeeker");
 const bcrypt = require("bcrypt");
 
 exports.jobSignUp = (req, res) => {
-  res.render("jobSignup");
+  res.render("jobseeker/jobSignup");
 };
 
 exports.postSignup = async (req, res) => {

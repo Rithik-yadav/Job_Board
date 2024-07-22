@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const cookie = require("../middleware/cookies");
 
 exports.eLoginRender = (req, res) => {
-  res.render("eLogin");
+  res.render("employer/eLogin"); // Updated path to match the new folder structure
 };
 
 exports.eLoginPost = async (req, res) => {
@@ -17,18 +17,18 @@ exports.eLoginPost = async (req, res) => {
     if (!employer || !(await bcrypt.compare(password, employer.password))) {
       return res
         .status(401)
-        .render("eLogin", { error: "Invalid email or password" });
+        .render("employer/eLogin", { error: "Invalid email or password" }); // Updated path
     }
 
     // Set cookies with secure options
     cookie.setCookies(employer, res);
 
     // Redirect to appropriate employer dashboard
-    res.redirect("/employer/addJob"); // Replace with your employer dashboard route
+    res.redirect("/employer/addJob"); // Make sure this matches your intended route
   } catch (error) {
     console.error(error);
-    res.status(500).render("eLogin", {
-      error: "An error occurred. Please try again later.",
+    res.status(500).render("employer/eLogin", {
+      error: "An error occurred. Please try again later.", // Updated path
     });
   }
 };

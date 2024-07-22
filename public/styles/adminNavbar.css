@@ -1,72 +1,99 @@
-/* Header */
+/* Header Styling */
 header {
-  background-color: #1c6dd0; /* Deep Blue background */
-  color: #fff8f3; /* Light Cream text */
-  padding: 1rem 0;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Gentle shadow for header */
+  background-color: #201e43; /* Dark Blue */
+  color: #eeeeee; /* Very Light Gray text */
+  padding: 20px 30px; /* Increased padding for more space */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
 
-.containerr {
-  width: 90%;
+header .containerr {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav {
+header nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
-.logo {
-  font-size: 1.75rem;
+header .logo {
+  font-size: 28px; /* Increased font size */
   font-weight: bold;
-  color: #fff8f3; /* Light Cream color for logo */
-  transition: color 0.3s ease;
+  color: #eeeeee; /* Very Light Gray */
+  text-transform: uppercase; /* Uppercase text for emphasis */
 }
 
-.logo:hover {
-  color: #e0e0e0; /* Light Gray on hover */
-  transform: translateY(-1px);
-}
-
-.nav-links ul {
+header .nav-links ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
+  gap: 30px; /* Increased gap between links */
 }
 
-.nav-links li {
-  margin: 0 1.5rem;
+header .nav-links ul li {
+  display: inline;
 }
 
-.nav-links a {
-  color: #fff8f3; /* Light Cream for links */
+header .nav-links ul li a {
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem; /* Slightly larger text */
-  transition: color 0.3s, transform 0.3s, background-color 0.3s;
-  padding: 0.5rem 0.75rem; /* Padding for better click area */
-  border-radius: 4px; /* Slightly rounded corners */
+  color: #eeeeee; /* Very Light Gray */
+  font-weight: 500;
+  font-size: 18px; /* Increased font size */
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  padding: 5px 10px;
 }
 
-.nav-links a:hover {
-  color: #e0e0e0; /* Light Gray on hover */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ); /* Subtle Light Transparent White background */
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Gentle shadow on hover */
+header .nav-links ul li a:hover {
+  color: #508c9b; /* Light Blue */
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-.nav-links a:active {
-  background-color: rgba(255, 255, 255, 0.3); /* Light Opaque White on click */
+/* Header hover effects and styling */
+header nav a {
+  position: relative;
+  padding: 5px 10px;
+}
+
+header nav a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px; /* Increased underline height */
+  bottom: 0;
+  left: 0;
+  background-color: #508c9b; /* Light Blue underline */
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+header nav a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px; /* Adjusted padding for smaller screens */
+  }
+
+  header .logo {
+    font-size: 24px; /* Smaller font size for smaller screens */
+  }
+
+  header .nav-links ul {
+    gap: 15px; /* Reduced gap between links */
+  }
+
+  header .nav-links ul li a {
+    font-size: 16px; /* Slightly smaller font size for smaller screens */
+  }
 }

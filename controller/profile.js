@@ -1,3 +1,3 @@
 exports.profileRender = (req, res) => {
-  res.render("profile");
+  res.render("jobseeker/profile");
 };

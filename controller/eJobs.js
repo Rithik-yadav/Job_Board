@@ -2,7 +2,7 @@ const Job = require("../models/Job");
 const Employer = require("../models/Employer");
 
 exports.addJob = (req, res) => {
-  res.render("addJob");
+  res.render("employer/addJob"); // Updated path to match the new folder structure
 };
 
 exports.addJobPost = async (req, res) => {
@@ -65,7 +65,7 @@ exports.addJobPost = async (req, res) => {
 
     res.status(200).send(
       `<script>alert("Job Posted Successfully");</script>
-       <meta http-equiv="refresh" content="0.1;url=/employer/addJob">`
+       <meta http-equiv="refresh" content="0.1;url=/employer/addJob">` // Updated redirect path
     );
   } catch (error) {
     console.error(error);
@@ -81,9 +81,7 @@ exports.jobFeed = async (req, res) => {
     // Fetch all jobs along with their associated employer data
     const jobs = await Job.find().populate("company").exec();
 
-    // Debugging: Check the jobs array to ensure that company data is populated
-
-    res.render("feed", { jobs });
+    res.render("jobseeker/feed", { jobs }); // Updated path to match the new folder structure
   } catch (error) {
     console.error(error);
     res.status(500).send("Error fetching job postings");
