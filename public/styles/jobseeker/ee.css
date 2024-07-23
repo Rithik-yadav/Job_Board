@@ -1,0 +1,87 @@
+/* Style for the search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 500px; /* Adjust as needed */
+  width: 100%;
+}
+
+/* Ensure the SVG icon is inside the input field */
+.icon {
+  position: absolute;
+  left: 10px; /* Adjust as needed */
+  width: 24px; /* Set width */
+  height: 24px; /* Set height */
+  fill: #9e9ea7; /* Icon color */
+}
+
+/* Style for the input field */
+.input {
+  padding-left: 40px; /* Space for the SVG icon */
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #eeedeb;
+  color: #0d0c22;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+  flex: 1; /* Take up remaining space */
+  margin-right: 10px;
+}
+
+.input::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: rgba(0, 150, 136, 0.4); /* Teal color for focus */
+  background-color: #f0f4f8;
+  box-shadow: 0 0 0 4px rgba(0, 150, 136, 0.1); /* Lighter shadow */
+}
+
+button {
+  height: 40px; /* Match this height with the input */
+  background-color: #004d40; /* Deep teal color for button */
+  border-radius: 5px;
+  box-shadow: rgb(0, 77, 64) 0px 4px 0px 0px;
+  padding: 0 15px; /* Adjust padding to match input */
+  background-repeat: no-repeat;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 154px; /* Fixed width */
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+  position: relative; /* Position relative to contain animation effects */
+}
+
+button::before {
+  content: "";
+  background-color: #00695c; /* Slightly darker teal */
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+button:hover {
+  background-color: #00251a; /* Even darker teal on hover */
+}

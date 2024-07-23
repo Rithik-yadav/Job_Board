@@ -40,31 +40,6 @@ h1 {
   }
 }
 
-/* Filters */
-.filters {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.filters label {
-  margin-right: 10px;
-}
-
-.filters select {
-  padding: 10px;
-  border-radius: 5px;
-  margin-right: 20px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.filters select:hover {
-  border-color: #00796b; /* Teal color for focus */
-  box-shadow: 0 0 5px rgba(0, 150, 136, 0.5);
-}
-
 /* Job Cards Container */
 .job-cards-container {
   display: flex;
@@ -385,4 +360,67 @@ button:hover::before {
 
 button:hover {
   background-color: #00251a; /* Even darker teal on hover */
+}
+/* Container to keep button and filters together */
+.filter-container {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Filter Toggle Button */
+.filter-toggle-button {
+  background-color: #028391; /* Adjust color as needed */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-toggle-button:hover {
+  background-color: #004d40; /* Adjust color as needed */
+}
+
+/* Filters */
+.filters {
+  padding-top: 10px;
+  margin-top: 40px;
+  margin-left: 800px; /* Pushes the item to the right side of the container */
+  align-self: flex-start;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  position: absolute;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  height: fit-content;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.filters.show {
+  height: fit-content;
+  opacity: 1;
+}
+
+.filters label {
+  font-weight: bold;
+}
+
+.filters input,
+.filters select {
+  /* padding: 8px; */
+  margin-top: 2px;
+  width: 96%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.filters input[type="text"] {
+  height: 2.1em;
 }

@@ -47,8 +47,38 @@
                             <input placeholder="🔍Search" type="search" class="input" id="search-input">
                             <button id="search-button">Search</button>
                         </div>
+
+                        <!-- Filter Toggle Button -->
+                        <button id="toggle-filters" class="filter-toggle-button">Show Filters</button>
+
+                        <!-- Filter Box -->
+                        <div id="filter-box" class="filters hidden">
+                            <label for="filter-title">Job Title:</label>
+                            <input type="text" id="filter-title" placeholder="Job Title">
+
+                            <label for="filter-company">Company Name:</label>
+                            <input type="text" id="filter-company" placeholder="Company Name">
+
+                            <label for="filter-status">Status:</label>
+                            <input type="text" id="filter-status" placeholder="Status">
+
+                            <label for="filter-type">Job Type:</label>
+                            <select id="filter-type">
+                                <option value="">All</option>
+                                <option value="Full-Time">Full-Time</option>
+                                <option value="Part-Time">Part-Time</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+
+                            <label for="filter-location">Location:</label>
+                            <input type="text" id="filter-location" placeholder="Location">
+
+                            <label for="filter-industry">Industry:</label>
+                            <input type="text" id="filter-industry" placeholder="Industry">
+                        </div>
                     </div>
                 </div>
+
                 <div class="job-cards-container">
                     <% if (jobs.length> 0) { %>
                         <% jobs.forEach(job=> { %>
@@ -80,7 +110,6 @@
                                         <strong>Education:</strong>
                                         <%= job.education %>
                                     </p>
-
                                     <p class="job-industry">
                                         <strong>Industry:</strong>
                                         <%= job.industry %>
@@ -132,9 +161,6 @@
         </section>
     </main>
     <script src="/js/feed.js"></script>
-    <script>
-
-    </script>
 </body>
 
 </html>
