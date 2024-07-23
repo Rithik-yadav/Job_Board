@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Job Board</title>
+    <link rel="stylesheet" href="/styles/admin/signup.css">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <script defer src="/scripts/validatePassword.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="containerr">
+            <div class="logo">JOB-BOARD</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="profile-photo">
+                <img src="/images/profile.png" alt="Profile Photo">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="signup-section">
+            <h1>Create Account</h1>
+            <form id="signupForm" action="/admin/signup" method="post">
+                <div class="form-control">
+                    <input type="text" name="username" required>
+                    <label><span>Username</span></label>
+                </div>
+                <div class="form-control">
+                    <input type="email" name="email" required>
+                    <label><span>Email</span></label>
+                </div>
+                <div class="form-control">
+                    <input type="password" name="password" id="password" required>
+                    <label><span>Password</span></label>
+                </div>
+                <div class="form-control">
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                    <label><span>Confirm Password</span></label>
+                </div>
+                <button type="submit" class="btn"><span>Sign Up</span></button>
+                <p class="signup-link">Already have an account? <a href="/admin/login">Log in</a></p>
+            </form>
+        </section>
+    </main>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+
+            form.addEventListener('submit', (e) => {
+                if (password.value !== confirmPassword.value) {
+                    e.preventDefault(); // Prevent form submission
+                    alert('Passwords do not match');
+                    confirmPassword.focus();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

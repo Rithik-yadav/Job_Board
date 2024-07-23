@@ -59,7 +59,32 @@ exports.checkCookiesEmployer = async (req, res, next) => {
     console.error(error);
     res.status(500).send(
       `<script>alert("An error occurred. Please try again later.");</script>
-    <meta http-equiv="refresh" content="0.1;url=/login">`
+    <meta http-equiv="refresh" content="0.1;url=employer/login">`
+    );
+  }
+};
+
+exports.checkCookiesAdmin = async (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(500).send(
+      `<script>alert("You are not authorised for this");</script>
+    <meta http-equiv="refresh" content="0.1;url=admin/login">`
+    );
+  }
+  const decode = jwt.verify(token, "Rithik");
+  try {
+    req.user = await Employer.findById(decode.id);
+    if (!req.user) {
+      return res.status(401).redirect("admin/login"); // Redirect to login on not found
+    }
+    console.log("Admin Cookies checked");
+    next();
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(
+      `<script>alert("An error occurred. Please try again later.");</script>
+    <meta http-equiv="refresh" content="0.1;url=admin/login">`
     );
   }
 };

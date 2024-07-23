@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const admin = require("../controller/admin/admin");
+const login = require("../controller/admin/adminLogin");
 
+router.get("/login", login.loginRender);
+router.get("/signup", login.signupRender);
 // Admin dashboard
 router.get("/dashboard", admin.dashboard);
 

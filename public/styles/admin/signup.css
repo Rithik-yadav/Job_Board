@@ -1,0 +1,294 @@
+/* General Body Styles */
+body {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    #f7f7f7,
+    #e0e0e0
+  ); /* Soft grey gradient */
+  color: #333333; /* Charcoal grey text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #003366; /* Deep navy blue background */
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .containerr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header .logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff; /* White text color */
+  text-transform: uppercase;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+header ul li {
+  margin: 0 20px;
+}
+
+header ul li a {
+  color: #ffffff; /* White text color */
+  text-decoration: none;
+  font-size: 18px; /* Increased font size */
+  transition: color 0.3s ease, padding 0.3s ease;
+}
+
+header ul li a:hover {
+  color: #ffab40; /* Warm coral on hover */
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffab40; /* Border underline effect */
+}
+
+header .profile-photo {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff; /* White border */
+}
+
+header .profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Main Content */
+main {
+  margin-top: 80px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  animation: slideIn 1s ease-out; /* Slide-in animation for main content */
+}
+
+/* Slide-In Animation for Main Content */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login Section */
+.login-section {
+  background: #ffffff; /* White background for login section */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for the box */
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #003366; /* Deep navy blue border */
+  animation: fadeIn 1s ease-out; /* Fade-in animation for the form */
+}
+
+/* Fade-In Animation for Form */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Heading */
+.login-section h1 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  color: #003366; /* Deep navy blue text color */
+}
+
+/* Form Control */
+.form-control {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #003366; /* Deep navy blue border */
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 18px;
+  color: #003366; /* Deep navy blue text color */
+  transition: border-bottom-color 0.3s ease; /* Transition for border color */
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: #ffab40; /* Warm coral focus color */
+  animation: borderGrow 0.3s ease-out; /* Animation for border focus */
+}
+
+/* Border Grow Animation */
+@keyframes borderGrow {
+  from {
+    border-bottom-width: 2px;
+  }
+  to {
+    border-bottom-width: 4px;
+  }
+}
+
+.form-control label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #003366; /* Deep navy blue text color */
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: #ffab40; /* Warm coral label color */
+  transform: translateY(-30px);
+}
+
+/* Signup Link */
+.signup-link {
+  margin-top: 20px;
+  color: #003366; /* Deep navy blue text color */
+}
+
+.signup-link a {
+  color: #ffab40; /* Warm coral link color */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #333333; /* Charcoal grey on hover */
+}
+
+/* Button Styles */
+button {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #003366; /* Deep navy blue background */
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease; /* Transition for scale effect */
+}
+
+button:hover {
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+button:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #ffab40; /* Warm coral background */
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+}
+
+button:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+button span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 18px 25px;
+  color: #ffffff; /* White text color */
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover span {
+  color: #003366; /* Deep navy blue on hover */
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.signup-section {
+  background: #ffffff8d; /* White background for login section */
+  padding: 40px;
+  padding-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
