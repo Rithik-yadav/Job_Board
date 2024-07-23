@@ -33,7 +33,7 @@
         <h1>
             <%= employer.companyName %>
         </h1>
-        <p><strong>Email:</strong>
+        <!-- <p><strong>Email:</strong>
             <%= employer.email %>
         </p>
         <p><strong>Industry:</strong>
@@ -47,7 +47,7 @@
         </p>
         <p><Strong> Description: </Strong>
             <%= employer.description %>
-        </p>
+        </p> -->
 
         <h2>Jobs Posted</h2>
         <ul>
@@ -58,7 +58,7 @@
                 <% }) %>
         </ul>
 
-        <h2>Edit Employer</h2>
+        <h2 style="text-align: center;">Edit Employer</h2>
         <form action="/admin/employers/<%= employer._id %>/edit" method="post">
             <label for="companyName">Company Name</label>
             <input type="text" id="companyName" name="companyName" value="<%= employer.companyName %>">

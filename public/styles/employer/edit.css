@@ -1,0 +1,137 @@
+/* General Body Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensures the header stays on top */
+}
+
+/* Main Content */
+main {
+  margin-top: 90px; /* Space for header */
+  padding: 20px;
+}
+h1 {
+  font-size: 40px;
+}
+/* Edit Job Section */
+.edit-job {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Layout */
+.edit-job form {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-template-areas:
+    "title location"
+    "salaryMin salaryMax"
+    "postedDate expiryDate"
+    "description description"
+    "submit submit";
+}
+
+/* Form Fields */
+.edit-job label {
+  display: block;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Input and Textarea Styling */
+.edit-job input[type="text"],
+.edit-job input[type="number"],
+.edit-job input[type="date"],
+.edit-job textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+}
+/* Button Styling */
+.edit-job button {
+  background: linear-gradient(
+    135deg,
+    #4caf50,
+    #2e7d32
+  ); /* Gradient background */
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Increase padding for a larger button */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 18px; /* Larger font size */
+  font-weight: 600; /* Bold text */
+  font-family: "Nunito", sans-serif;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  position: relative;
+}
+
+.edit-job button:hover {
+  background: linear-gradient(
+    135deg,
+    #66bb6a,
+    #388e3c
+  ); /* Darker gradient on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+.edit-job button:active {
+  background: linear-gradient(
+    135deg,
+    #2e7d32,
+    #4caf50
+  ); /* Even darker gradient on click */
+  transform: translateY(1px); /* Slight push effect */
+}
+
+.edit-job button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Subtle white overlay for hover effect */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.edit-job button:hover::before {
+  opacity: 1;
+}

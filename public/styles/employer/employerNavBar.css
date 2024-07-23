@@ -16,14 +16,15 @@ nav {
 
 /* Navbar logo */
 nav .logo {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   color: #a5d7e8;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav .logo:hover {
   color: #576cbc;
+  transform: scale(1.1);
 }
 
 /* Navbar links */
@@ -41,20 +42,43 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: #a5d7e8;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* Enhanced hover effect */
 nav ul li a:hover {
-  color: #576cbc;
-  transform: translateY(-3px);
+  color: #ffffff;
+  background-color: #576cbc;
+  transform: translateY(-4px); /* Slightly lifted effect */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
 }
 
+/* Subtle underline effect */
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Active link styling */
 nav ul li a.active {
-  color: #a5d7e8;
-  border-bottom: 3px solid #a5d7e8;
+  color: #ffffff;
+  border-bottom: 3px solid #ffffff;
 }
 
 /* Profile photo styling */
@@ -90,11 +114,11 @@ nav .profile-photo:hover {
   }
 
   nav ul li a {
-    font-size: 1.2rem;
-    padding: 10px;
+    font-size: 1.3rem;
+    padding: 12px;
     width: 100%;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 5px;
   }
 
   nav ul li a:hover {

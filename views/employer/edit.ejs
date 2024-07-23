@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job - Job Board</title>
+    <link rel="stylesheet" href="/styles/employer/edit.css"> <!-- Include your CSS here -->
+    <link rel="stylesheet" href="/styles/employer/employerNavBar.css">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">Job-Board</div>
+                <ul>
+                    <li><a href="/employer/dashboard" style="color: #FA7070;">Home</a></li>
+                    <li><a href="/employer/addJob">Jobs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <!-- Profile Photo Link -->
+                <a href="/profile">
+                    <img src="/images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="edit-job">
+            <div class="container">
+                <h1>Edit Job Posting</h1>
+
+                <form action="/employer/edit/<%= job._id %>" method="POST">
+                    <div class="row">
+                        <div>
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" value="<%= job.title %>" required>
+                        </div>
+                        <div>
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" value="<%= job.location %>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <label for="salaryMin">Minimum Salary:</label>
+                            <input type="number" id="salaryMin" name="salaryMin" value="<%= job.salary.min %>">
+                        </div>
+                        <div>
+                            <label for="salaryMax">Maximum Salary:</label>
+                            <input type="number" id="salaryMax" name="salaryMax" value="<%= job.salary.max %>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <label for="postedDate">Posted Date:</label>
+                            <input type="date" id="postedDate" name="postedDate"
+                                value="<%= job.postedDate.toISOString().split('T')[0] %>">
+                        </div>
+                        <div>
+                            <label for="expiryDate">Expiry Date:</label>
+                            <input type="date" id="expiryDate" name="expiryDate"
+                                value="<%= job.expiryDate ? job.expiryDate.toISOString().split('T')[0] : '' %>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="full-width">
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" required><%= job.description %></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit">Update Job</button>
+                </form>
+
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

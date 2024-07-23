@@ -1,0 +1,109 @@
+/* Reset default margin, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General body styles */
+body {
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  background-color: #e7f6f2; /* Light green */
+  color: #2c3333; /* Dark teal */
+  padding: 20px;
+  margin-top: 90px; /* Leave space for the header */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 1200px; /* Limit the width for better readability */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+
+/* Alert box styling */
+.alert {
+  padding: 10px;
+  color: white;
+  background-color: #4caf50; /* Green */
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+}
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+/* Job cards container styling */
+.job-cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* 3 cards per row */
+  gap: 20px; /* Space between cards */
+  width: 100%;
+  justify-content: center; /* Center the cards horizontally */
+  animation: fadeIn 1s ease-in-out; /* Animation for container */
+}
+
+/* Job card styling */
+.job-card {
+  text-align: left;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  animation: scaleIn 0.5s ease-out; /* Animation for each card */
+}
+
+.job-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Job card heading styling */
+.job-card h3 {
+  margin-bottom: 10px;
+  color: #333; /* Slightly darker text for job titles */
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+/* Job card paragraph styling */
+.job-card p {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+/* Button container styling */
+.button-container {
+  display: flex;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

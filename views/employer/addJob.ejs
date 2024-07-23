@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Form</title>
-    <link rel="stylesheet" href="/styles/employer/employerNavBar.css">
-    <link rel="stylesheet" href="/styles/employer/addJob.css">
 
+    <link rel="stylesheet" href="/styles/employer/addJob.css">
+    <link rel="stylesheet" href="/styles/employer/employerNavBar.css">
     <link rel="icon" type="image/png" href="/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,8 +18,8 @@
             <nav>
                 <div class="logo">Job-Board</div>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/feed" style="color: #FA7070;">Jobs</a></li>
+                    <li><a href="/employer/dashboard">Home</a></li>
+                    <li><a href="/employer/addJob" style="color: #FA7070;">Jobs</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
@@ -32,7 +32,7 @@
     </header>
     <h1>Job Listing Form</h1>
     <div class="job-form-container">
-        <form action="/addJobPost" method="POST" class="job-form">
+        <form action="/employer/addJobPost" method="POST" class="job-form">
             <div class="form-group">
                 <label for="title">Job Title:</label>
                 <input type="text" id="title" name="title" required>

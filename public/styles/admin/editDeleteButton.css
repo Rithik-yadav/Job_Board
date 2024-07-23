@@ -1,11 +1,14 @@
 .button-container {
+  font-family: "Nunito", sans-serif;
   display: flex;
   gap: 10px; /* Space between buttons */
 }
 
 /* Edit Button style */
 .edit-button {
-  margin: 10px;
+  font-family: "Nunito", sans-serif;
+  /* margin: 10px; */
+  margin-bottom: 5px;
   border-radius: 10px;
   position: relative;
   width: 150px;
@@ -69,7 +72,8 @@
 
 /* Delete Button style */
 .delete-button {
-  margin: 10px;
+  /* margin: 10px; */
+  margin-bottom: 5px;
   border-radius: 10px;
   position: relative;
   width: 150px;
