@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const employer = require("../controller/eLogin");
-const employerSignup = require("../controller/eSignup");
-const job = require("../controller/eJobs");
+const employer = require("../controller/employer/eLogin");
+const employerSignup = require("../controller/employer/eSignup");
+const job = require("../controller/employer/eJobs");
 const cookie = require("../middleware/cookies");
-const home = require("../controller/employerHome");
-const changes = require("../controller/employerEdit");
+const home = require("../controller/employer/employerHome");
+const changes = require("../controller/employer/employerEdit");
 
 // Employer login/signup
 router.get("/login", employer.eLoginRender); // Render employer login form

@@ -1,4 +1,4 @@
-const Employer = require("../models/Employer");
+const Employer = require("../../models/Employer");
 const bcrypt = require("bcrypt");
 
 exports.eSignupRender = (req, res) => {

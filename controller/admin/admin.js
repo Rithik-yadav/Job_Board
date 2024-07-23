@@ -1,7 +1,7 @@
 // server/controllers/adminController.js
-const Employer = require("../models/Employer");
-const Job = require("../models/Job");
-const JobSeeker = require("../models/JobSeeker");
+const Employer = require("../../models/Employer");
+const Job = require("../../models/Job");
+const JobSeeker = require("../../models/JobSeeker");
 
 // Controller function for rendering the dashboard
 exports.dashboard = async (req, res) => {

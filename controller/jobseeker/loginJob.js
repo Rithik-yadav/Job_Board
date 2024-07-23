@@ -1,6 +1,6 @@
-const JobSeeker = require("../models/JobSeeker");
+const JobSeeker = require("../../models/JobSeeker");
 const bcrypt = require("bcrypt");
-const cookie = require("../middleware/cookies");
+const cookie = require("../../middleware/cookies");
 
 exports.loginJob = (req, res) => {
   res.render("jobseeker/jobLogin"); // Updated path to match the new folder structure

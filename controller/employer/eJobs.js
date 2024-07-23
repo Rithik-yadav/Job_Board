@@ -1,5 +1,5 @@
-const Job = require("../models/Job");
-const Employer = require("../models/Employer");
+const Job = require("../../models/Job");
+const Employer = require("../../models/Employer");
 
 exports.addJob = (req, res) => {
   res.render("employer/addJob"); // Updated path to match the new folder structure

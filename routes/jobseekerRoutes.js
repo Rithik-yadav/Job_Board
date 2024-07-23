@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const jobSign = require("../controller/signupJob");
-const jobLogin = require("../controller/loginJob");
+const jobSign = require("../controller/jobseeker/signupJob");
+const jobLogin = require("../controller/jobseeker/loginJob");
 const cookie = require("../middleware/cookies");
-const profile = require("../controller/profile");
-const home = require("../controller/home");
+const profile = require("../controller/jobseeker/profile");
+const home = require("../controller/jobseeker/home");
 
 // Signup
 router.get("/signup", jobSign.jobSignUp); // Render signup form

@@ -1,4 +1,4 @@
-const jobSeeker = require("../models/JobSeeker");
+const jobSeeker = require("../../models/JobSeeker");
 const bcrypt = require("bcrypt");
 
 exports.jobSignUp = (req, res) => {
