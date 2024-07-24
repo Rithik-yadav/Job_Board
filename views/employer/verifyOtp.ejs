@@ -3,19 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify OTP</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="stylesheet" href="/styles/employer/verifyOtp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Verify OTP</h1>
-    <form action="/employer/verifyOtp" method="POST">
-        <input type="hidden" name="email" value="<%= email %>">
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" name="otp" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Verify OTP</button>
-    </form>
+    <div class="container">
+        <h1>Verify OTP</h1>
+        <form action="/employer/verifyOtp" method="POST">
+            <p class="info-text">We have sent an email to your mail. Please verify to continue.</p>
+            <!-- <input type="text" name="email" value="<%= email %>"> -->
+            <input type="email" name="email" value="<%= email %>" readonly>
+            <input type="text" name="otp" placeholder="Enter OTP" required>
+            <button type="submit" class="">Verify OTP</button>
+        </form>
+        <a href="/employer/signup" class="Btn back">⬅️Back</a>
+    </div>
 </body>
 
 </html>

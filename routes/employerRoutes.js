@@ -12,6 +12,9 @@ router.get("/login", employer.eLoginRender); // Render employer login form
 router.post("/login", employer.eLoginPost); // Handle employer login form submission
 router.get("/signup", employerSignup.eSignupRender); // Render employer signup form
 router.post("/signup", employerSignup.eSignupPost); // Handle employer signup form submission
+router.get("/verifyOtp", employerSignup.verifyOtpRender);
+router.post("/verifyOtp", employerSignup.verifyOtpPost);
+router.post("/v", employerSignup.v);
 
 // Job posting Employer side
 router.get("/dashboard", cookie.checkCookiesEmployer, home.employerHome);

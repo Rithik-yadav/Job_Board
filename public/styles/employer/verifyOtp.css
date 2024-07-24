@@ -1,0 +1,136 @@
+/* Reset some default styles */
+body,
+h1,
+form,
+input,
+button,
+a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.info-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 4px;
+  color: #333;
+  box-shadow: 0 0.2rem rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #560bad;
+  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+button {
+  background: #560bad;
+  color: #fff;
+  border: none;
+  margin: 10px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #3a0ca3;
+}
+a {
+  text-decoration: none;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.Btn {
+  padding: 0.5rem 1rem;
+  height: 40px;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(15, 15, 15); /* Dark background */
+  border: none;
+  color: white;
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+
+.Btn::before {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  content: "";
+  background-color: white; /* Hover effect color */
+  border-radius: 50%;
+  left: -100%;
+  top: 0;
+  transition-duration: 0.3s;
+  mix-blend-mode: difference;
+}
+
+.Btn:hover::before {
+  transition-duration: 0.3s;
+  transform: translate(100%, -50%);
+  border-radius: 0;
+}
+
+.Btn:active {
+  transform: translate(5px, 5px);
+  transition-duration: 0.3s;
+}
+
+/* Back button specific styling */
+.Btn.back {
+  width: 130px; /* Default width for the back button */
+}

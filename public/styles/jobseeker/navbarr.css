@@ -1,0 +1,77 @@
+/* Navbar styles */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px; /* Added padding for spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+header:hover {
+  background: #f9f9f9;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Shift nav to the right */
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #007bff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.119);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.07);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px; /* Space between items */
+}
+
+nav ul li {
+  margin: 0; /* Remove margin */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #0182f4;
+  font-weight: 700;
+  font-size: 21px;
+  padding: 10px 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+.profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.1);
+}

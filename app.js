@@ -19,7 +19,9 @@ app.set("view engine", "ejs");
 app.use("/", jobseekerRoutes); // Routes for job seekers
 app.use("/employer", employerRoutes); // Routes for employers
 app.use("/job", jobRoutes); // Routes for job postings
-
+app.get("/about", (req, res) => {
+  res.render("jobseeker/about");
+});
 // Admin routes
 app.use("/admin", adminRoutes);
 
