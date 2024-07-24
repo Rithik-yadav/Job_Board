@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+</head>
+
+<body>
+    <h1>Verify OTP</h1>
+    <form action="/employer/verifyOtp" method="POST">
+        <input type="hidden" name="email" value="<%= email %>">
+        <label for="otp">OTP:</label>
+        <input type="text" id="otp" name="otp" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Verify OTP</button>
+    </form>
+</body>
+
+</html>
