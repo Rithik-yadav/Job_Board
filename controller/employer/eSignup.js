@@ -1,5 +1,4 @@
 const Employer = require("../../models/Employer");
-const TempEmployer = require("../../models/TempEmployer");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
@@ -13,15 +12,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Temporary in-memory store for OTPs
+const tempEmployers = [];
+
 exports.eSignupRender = (req, res) => {
   res.render("employer/eSignup");
 };
 
-exports.v = (req, res) => {
-  res.render("employer/verifyOtp");
-};
 exports.eSignupPost = async (req, res) => {
-  let {
+  const {
     companyName,
     location,
     email,
@@ -42,7 +41,7 @@ exports.eSignupPost = async (req, res) => {
     }
 
     // Check if the email is already used for temporary signup
-    let tempEmployer = await TempEmployer.findOne({ email });
+    let tempEmployer = tempEmployers.find((temp) => temp.email === email);
     if (tempEmployer) {
       return res.status(400).send(
         `<script>alert("A signup process is already in progress for this email");</script>
@@ -52,14 +51,14 @@ exports.eSignupPost = async (req, res) => {
 
     // Generate OTP
     const otp = crypto.randomBytes(3).toString("hex"); // Generate a 6-digit OTP
-    const otpExpires = Date.now() + 3600000; // OTP expires in 1 hour
+    const otpExpires = Date.now() + 900000; // OTP expires in 1 hour
 
     // Hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Store temporary employer details
-    await TempEmployer.create({
+    tempEmployers.push({
       companyName,
       location,
       email,
@@ -75,8 +74,8 @@ exports.eSignupPost = async (req, res) => {
     const mailOptions = {
       from: "rithikshaabji@gmail.com",
       to: email,
-      subject: "OTP for Email Verification",
-      text: `Your OTP for email verification is ${otp}. It is valid for 1 hour.`,
+      subject: "JobZen Email Verification",
+      text: `Your OTP for email verification is ${otp}. It is valid for 15 minutes.`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -99,9 +98,19 @@ exports.verifyOtpPost = async (req, res) => {
   const { email, otp } = req.body;
 
   try {
-    const tempEmployer = await TempEmployer.findOne({ email, otp });
+    // Find the OTP record for the given email
+    const tempIndex = tempEmployers.findIndex((temp) => temp.email === email);
 
-    if (!tempEmployer) {
+    if (tempIndex === -1) {
+      return res.status(400).send(
+        `<script>alert("Invalid OTP request");</script>
+         <meta http-equiv="refresh" content="0.1;url=/employer/verifyOtp?email=${email}">`
+      );
+    }
+
+    const tempEmployer = tempEmployers[tempIndex];
+
+    if (tempEmployer.otp !== otp) {
       return res.status(400).send(
         `<script>alert("Invalid OTP");</script>
          <meta http-equiv="refresh" content="0.1;url=/employer/verifyOtp?email=${email}">`
@@ -109,7 +118,7 @@ exports.verifyOtpPost = async (req, res) => {
     }
 
     if (tempEmployer.otpExpires < Date.now()) {
-      await TempEmployer.deleteOne({ email });
+      tempEmployers.splice(tempIndex, 1); // Remove expired OTP
       return res.status(400).send(
         `<script>alert("OTP expired. Please signup again.");</script>
          <meta http-equiv="refresh" content="0.1;url=/employer/signup">`
@@ -127,8 +136,8 @@ exports.verifyOtpPost = async (req, res) => {
       password: tempEmployer.password,
     });
 
-    // Delete temporary employer details
-    await TempEmployer.deleteOne({ email });
+    // Remove the OTP from the store after successful verification
+    tempEmployers.splice(tempIndex, 1);
 
     res.status(201).send(
       `<script>alert("Email verified and registration successful");</script>

@@ -15,6 +15,8 @@
         <h1>Verify OTP</h1>
         <form action="/employer/verifyOtp" method="POST">
             <p class="info-text">We have sent an email to your mail. Please verify to continue.</p>
+            <br>
+            <p>It is valid for <strong>15 minutes</strong> only</p>
             <!-- <input type="text" name="email" value="<%= email %>"> -->
             <input type="email" name="email" value="<%= email %>" readonly>
             <input type="text" name="otp" placeholder="Enter OTP" required>

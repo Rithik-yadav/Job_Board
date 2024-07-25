@@ -4,14 +4,14 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
 // Temporary in-memory store for OTPs
-const otpStore = {};
+const otpStore = [];
 
 exports.jobSignUp = (req, res) => {
   res.render("jobseeker/jobSignup");
 };
 
 exports.postSignup = async (req, res) => {
-  let { name, username, email, password } = req.body;
+  const { name, username, email, password } = req.body;
   try {
     let user = await jobSeeker.findOne({ email });
     if (user) {
@@ -23,9 +23,10 @@ exports.postSignup = async (req, res) => {
 
     // Generate OTP
     const otp = crypto.randomBytes(3).toString("hex");
+    const otpExpires = Date.now() + 900000; // OTP expires in 15 mins
 
     // Store OTP and user details temporarily
-    otpStore[email] = { otp, name, username, email, password };
+    otpStore.push({ email, otp, otpExpires, name, username, password });
 
     // Send OTP to user's email
     const transporter = nodemailer.createTransport({
@@ -39,8 +40,8 @@ exports.postSignup = async (req, res) => {
     const mailOptions = {
       from: "rithikshaabji@gmail.com",
       to: email,
-      subject: "Your OTP for account verification",
-      text: `Your OTP is ${otp}`,
+      subject: "JobZen Email Verification",
+      text: `Your OTP for email verification is ${otp}. It is valid for 15 minutes.`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -62,17 +63,36 @@ exports.verifyOtpGet = (req, res) => {
 
 exports.verifyOtpPost = async (req, res) => {
   const { email, otp } = req.body;
-  const storedOtpData = otpStore[email];
 
-  if (!storedOtpData || storedOtpData.otp !== otp) {
+  // Find the OTP record for the given email
+  const otpIndex = otpStore.findIndex((entry) => entry.email === email);
+
+  if (otpIndex === -1) {
+    return res.status(400).send(
+      `<script>alert("Invalid OTP request");</script>
+       <meta http-equiv="refresh" content="0.1;url=/verify-otp?email=${email}">`
+    );
+  }
+
+  const otpData = otpStore[otpIndex];
+
+  if (otpData.otp !== otp) {
     return res.status(400).send(
       `<script>alert("Invalid OTP");</script>
        <meta http-equiv="refresh" content="0.1;url=/verify-otp?email=${email}">`
     );
   }
 
+  if (otpData.otpExpires < Date.now()) {
+    otpStore.splice(otpIndex, 1); // Remove expired OTP
+    return res.status(400).send(
+      `<script>alert("OTP expired. Please signup again.");</script>
+       <meta http-equiv="refresh" content="0.1;url=/signup">`
+    );
+  }
+
   try {
-    const { name, username, password } = storedOtpData;
+    const { name, username, password } = otpData;
     const salt = await bcrypt.genSalt(10);
     const hashedpass = await bcrypt.hash(password, salt);
     let newUser = new jobSeeker({
@@ -84,7 +104,7 @@ exports.verifyOtpPost = async (req, res) => {
     await newUser.save();
 
     // Remove the OTP from the store after successful verification
-    delete otpStore[email];
+    otpStore.splice(otpIndex, 1);
 
     res.status(201).send(
       `<script>alert("Registration successful");</script>
