@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job Seeker</title>
+    <link rel="stylesheet" href="/styles/admin/editJobSeeker.css">
+    <link rel="stylesheet" href="/styles/admin/adminNavbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="containerr">
+            <nav>
+                <div class="logo">JobZen</div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
+                        <li><a href="/admin/employers">Employers</a></li>
+                        <li><a href="/admin/jobs">Jobs</a></li>
+                        <li><a href="/admin/jobSeekersList">JobSeekers</a></li>
+                        <li><a href="/admin/settings">Settings</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Edit Job Seeker</h1>
+        <form action="/admin/jobSeekers/<%= jobSeeker._id %>/update" method="POST">
+            <!-- Grid layout for basic information and skills -->
+            <div class="grid-2">
+                <!-- Basic Information -->
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="<%= jobSeeker.username || '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<%= jobSeeker.email || '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= jobSeeker.name || '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label>Skills:</label>
+                    <div id="skills-container">
+                        <% (jobSeeker.skills || []).forEach((skill, index)=> { %>
+                            <div class="skill">
+                                <label for="skill-<%= index %>">Skill <%= index + 1 %>:</label>
+                                <input type="text" id="skill-<%= index %>" name="skills[<%= index %>]"
+                                    value="<%= skill || '' %>">
+                            </div>
+                            <% }); %>
+                    </div>
+                    <button type="button" id="add-skill">Add Skill</button>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="form-group">
+                <label>Experience:</label>
+                <div class="experience">
+                    <% (jobSeeker.experience || []).forEach((exp, index)=> { %>
+                        <div class="experience">
+                            <h3>Experience <%= index + 1 %>
+                            </h3>
+                            <label for="title-<%= index %>">Title:</label>
+                            <input type="text" id="title-<%= index %>" name="experience[<%= index %>][title]"
+                                value="<%= exp.title || '' %>">
+                            <label for="company-<%= index %>">Company:</label>
+                            <input type="text" id="company-<%= index %>" name="experience[<%= index %>][company]"
+                                value="<%= exp.company || '' %>">
+                            <label for="startDate-<%= index %>">Start Date:</label>
+                            <input type="date" id="startDate-<%= index %>" name="experience[<%= index %>][startDate]"
+                                value="<%= exp.startDate ? new Date(exp.startDate).toISOString().substring(0, 10) : '' %>">
+                            <label for="endDate-<%= index %>">End Date:</label>
+                            <input type="date" id="endDate-<%= index %>" name="experience[<%= index %>][endDate]"
+                                value="<%= exp.endDate ? new Date(exp.endDate).toISOString().substring(0, 10) : '' %>">
+                            <label for="description-<%= index %>">Description:</label>
+                            <textarea id="description-<%= index %>"
+                                name="experience[<%= index %>][description]"><%= exp.description || '' %></textarea>
+                        </div>
+                        <% }); %>
+                </div>
+                <button type="button" id="add-experience">Add Experience</button>
+            </div>
+
+            <!-- Education Section -->
+            <div class="form-group">
+                <label>Education:</label>
+                <div class="education">
+                    <% (jobSeeker.education || []).forEach((edu, index)=> { %>
+                        <div class="education">
+                            <h3>Education <%= index + 1 %>
+                            </h3>
+                            <label for="institution-<%= index %>">Institution:</label>
+                            <input type="text" id="institution-<%= index %>" name="education[<%= index %>][institution]"
+                                value="<%= edu.institution || '' %>">
+                            <label for="degree-<%= index %>">Degree:</label>
+                            <input type="text" id="degree-<%= index %>" name="education[<%= index %>][degree]"
+                                value="<%= edu.degree || '' %>">
+                            <label for="startDate-<%= index %>">Start Date:</label>
+                            <input type="date" id="startDate-<%= index %>" name="education[<%= index %>][startDate]"
+                                value="<%= edu.startDate ? new Date(edu.startDate).toISOString().substring(0, 10) : '' %>">
+                            <label for="endDate-<%= index %>">End Date:</label>
+                            <input type="date" id="endDate-<%= index %>" name="education[<%= index %>][endDate]"
+                                value="<%= edu.endDate ? new Date(edu.endDate).toISOString().substring(0, 10) : '' %>">
+                            <label for="description-<%= index %>">Description:</label>
+                            <textarea id="description-<%= index %>"
+                                name="education[<%= index %>][description]"><%= edu.description || '' %></textarea>
+                        </div>
+                        <% }); %>
+                </div>
+                <button type="button" id="add-education">Add Education</button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn-submit"><span class="circle1"></span>
+                    <span class="circle2"></span>
+                    <span class="circle3"></span>
+                    <span class="circle4"></span>
+                    <span class="circle5"></span>
+                    <span class="text">Update</span></button>
+            </div>
+        </form>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addExperienceButton = document.getElementById('add-experience');
+            const addEducationButton = document.getElementById('add-education');
+            const addSkillButton = document.getElementById('add-skill');
+            const experienceContainer = document.querySelector('div.form-group > div.experience');
+            const educationContainer = document.querySelector('div.form-group > div.education');
+            const skillsContainer = document.getElementById('skills-container');
+
+            // Function to add new experience section
+            function addExperience() {
+                const index = experienceContainer.children.length;
+                const newExperienceHTML = `
+            <div class="experience">
+                <h3>Experience ${index + 1}</h3>
+                <label for="title-${index}">Title:</label>
+                <input type="text" id="title-${index}" name="experience[${index}][title]">
+                <label for="company-${index}">Company:</label>
+                <input type="text" id="company-${index}" name="experience[${index}][company]">
+                <label for="startDate-${index}">Start Date:</label>
+                <input type="date" id="startDate-${index}" name="experience[${index}][startDate]">
+                <label for="endDate-${index}">End Date:</label>
+                <input type="date" id="endDate-${index}" name="experience[${index}][endDate]">
+                <label for="description-${index}">Description:</label>
+                <textarea id="description-${index}" name="experience[${index}][description]"></textarea>
+            </div>
+        `;
+                experienceContainer.insertAdjacentHTML('beforeend', newExperienceHTML);
+            }
+
+            // Function to add new education section
+            function addEducation() {
+                const index = educationContainer.children.length;
+                const newEducationHTML = `
+            <div class="education">
+                <h3>Education ${index + 1}</h3>
+                <label for="institution-${index}">Institution:</label>
+                <input type="text" id="institution-${index}" name="education[${index}][institution]">
+                <label for="degree-${index}">Degree:</label>
+                <input type="text" id="degree-${index}" name="education[${index}][degree]">
+                <label for="startDateEdu-${index}">Start Date:</label>
+                <input type="date" id="startDateEdu-${index}" name="education[${index}][startDate]">
+                <label for="endDateEdu-${index}">End Date:</label>
+                <input type="date" id="endDateEdu-${index}" name="education[${index}][endDate]">
+                <label for="descriptionEdu-${index}">Description:</label>
+                <textarea id="descriptionEdu-${index}" name="education[${index}][description]"></textarea>
+            </div>
+        `;
+                educationContainer.insertAdjacentHTML('beforeend', newEducationHTML);
+            }
+
+            // Function to add new skill
+            function addSkill() {
+                const index = skillsContainer.children.length;
+                const newSkillHTML = `
+            <div class="skill">
+                <label for="skill-${index}">Skill ${index + 1}:</label>
+                <input type="text" id="skill-${index}" name="skills[${index}]">
+                <button type="button" class="remove-skill" onclick="removeSkill(this)">Remove</button>
+            </div>
+        `;
+                skillsContainer.insertAdjacentHTML('beforeend', newSkillHTML);
+            }
+
+            // Function to remove a skill
+            function removeSkill(button) {
+                button.parentElement.remove();
+            }
+
+            // Attach event listeners to buttons
+            if (addExperienceButton) {
+                addExperienceButton.addEventListener('click', addExperience);
+            }
+
+            if (addEducationButton) {
+                addEducationButton.addEventListener('click', addEducation);
+            }
+
+            if (addSkillButton) {
+                addSkillButton.addEventListener('click', addSkill);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

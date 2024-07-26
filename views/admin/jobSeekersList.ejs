@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job List</title>
-    <link rel="stylesheet" href="/styles/admin/jobList.css">
+    <title>Job Seekers List</title>
     <link rel="stylesheet" href="/styles/admin/adminNavbar.css">
+    <link rel="stylesheet" href="/styles/admin/jobSeekersList.css">
     <link rel="stylesheet" href="/styles/admin/editDeleteButton.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -30,52 +32,63 @@
     </header>
 
     <main>
-        <h1>Job List</h1>
+        <h1>Job Seekers List</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Job Title</th>
-                    <th>Company</th>
-                    <th>Location</th>
+                    <th>Serial No</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Skills</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <% jobs.forEach(job=> { %>
+                <% jobSeekers.forEach(function(seeker,index) { %>
                     <tr>
                         <td>
-                            <%= job.title %>
+                            <%= index + 1 %>
                         </td>
                         <td>
-                            <% if (job.company && job.company.companyName) { %>
-                                <%= job.company.companyName %>
-                                    <% } else { %>
-                                        No company information
-                                        <% } %>
+                            <%= seeker.username %>
                         </td>
                         <td>
-                            <%= job.location %>
+                            <%= seeker.email %>
                         </td>
                         <td>
-                            <div class="button-container">
-                                <form action="/admin/jobs/<%= job._id %>/edit" method="GET">
-                                    <button class="edit-button" type="submit">
-                                        <span class="edit-button__text">Edit</span>
-                                        <span class="edit-button__icon">
-                                            <!-- Replace with your edit icon SVG -->
-                                            <svg class="svg" height="512" viewBox="0 0 512 512" width="512"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <title>Edit</title>
-                                                <path
-                                                    d="M320,92.6l64.4,64.4-184,184-64.4-64.4L320,92.6m0-28.2L128,244.4l84,84L404.4,148.4 320,64.4 320,64.4z"
-                                                    style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </form>
-                                <form action="/admin/jobs/<%= job._id %>/delete" method="POST"
-                                    onsubmit="return confirm(' Are you sure you want to delete this job?');">
+                            <%= seeker.name %>
+                        </td>
+                        <td>
+                            <%= seeker.skills.join(', ') %></td>
+                    <td class="action">
+                        <!-- <a href="/admin/jobSeekers/<%= seeker._id %>/edit" class="edit-btn">Edit</a> -->
+                        <form action="/admin/jobSeekers/<%= seeker._id %>/edit" method="GET">
+                            <button class="edit-button" type="submit">
+                                <span class="edit-button__text">Edit</span>
+                                <span class="edit-button__icon">
+                                    <!-- Replace with your edit icon SVG -->
+                                    <svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+                                        <title>Edit</title>
+                                        <path
+                                            d="M320,92.6l64.4,64.4-184,184-64.4-64.4L320,92.6m0-28.2L128,244.4l84,84L404.4,148.4 320,64.4 320,64.4z"
+                                            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </form>
+                        <!-- <form action="/admin/jobSeekers/<%= seeker._id %>/delete" method="POST"
+                            onsubmit="return confirm(' Are you sure you want to delete this job seeker?');">
+                                <button class="button" type="submit">
+                                    <span class="button__text">Delete</span>
+                                    <span class="button__icon">
+
+                                    </span>
+                                </button>
+                                </form> -->
+                                <form action="/admin/jobSeekers/<%= seeker._id %>/delete" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this Jobsee?');">
                                     <button class="delete-button" type="submit">
                                         <span class="delete-button__text">Delete</span>
                                         <span class="delete-button__icon">
@@ -106,13 +119,15 @@
                                         </span>
                                     </button>
                                 </form>
-                            </div>
+
                         </td>
                     </tr>
-                    <% }) %>
+                    <% }); %>
             </tbody>
         </table>
     </main>
+
+    <script src="/scripts/admin/jobSeekersList.js"></script>
 </body>
 
 </html>

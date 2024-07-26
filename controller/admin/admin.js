@@ -171,6 +171,14 @@ exports.updateJob = async (req, res) => {
   }
 };
 
+exports.jobSeekerListRender = async (req, res) => {
+  try {
+    const jobSeekers = await JobSeeker.find();
+    res.render("admin/jobSeekersList", { jobSeekers });
+  } catch (error) {
+    res.status(500).send("Server Error");
+  }
+};
 // Delete a job
 exports.deleteJob = async (req, res) => {
   const { id } = req.params;
@@ -194,6 +202,66 @@ exports.deleteJob = async (req, res) => {
     await Job.findByIdAndDelete(id);
 
     res.redirect("/admin/jobs");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+// Edit job seeker details (form submission)
+exports.renderEditJobSeekerForm = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const jobSeeker = await JobSeeker.findById(id);
+    if (!jobSeeker) {
+      return res.status(404).send("Job Seeker not found");
+    }
+    res.render("admin/editJobSeeker", { jobSeeker });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+// Update job seeker details
+exports.updateJobSeeker = async (req, res) => {
+  const { id } = req.params;
+  const { username, email, name, skills, experience, education } = req.body;
+
+  try {
+    const updatedJobSeeker = await JobSeeker.findByIdAndUpdate(
+      id,
+      { username, email, name, skills, experience, education },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedJobSeeker) {
+      return res.status(404).send("Job Seeker not found");
+    }
+
+    res.status(201).send(
+      `<script>alert("JobSeeker Update successful");</script>
+       <meta http-equiv="refresh" content="0.1;url=/admin/jobSeekers/${id}/edit">`
+    );
+    // res.redirect(`/admin/jobSeekers/${id}`);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+// Delete a job seeker
+exports.deleteJobSeeker = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const jobSeeker = await JobSeeker.findById(id);
+
+    if (!jobSeeker) {
+      return res.status(404).send("Job Seeker not found");
+    }
+
+    await JobSeeker.findByIdAndDelete(id);
+
+    res.status(201).send(
+      `<script>alert("JobSeeker Deletion successful");</script>
+       <meta http-equiv="refresh" content="0.1;url=/admin/dashboard">`
+    );
   } catch (error) {
     res.status(500).send(error.message);
   }

@@ -1,0 +1,293 @@
+/* General body styling */
+body {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    #e0f2f1,
+    #ffffff
+  ); /* Soft gradient background */
+  color: #004d40;
+}
+
+/* Main content area */
+main {
+  padding: 20px;
+  margin-top: 60px; /* Space for the header */
+  max-width: 1200px;
+  margin: 60px auto 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out; /* Fade-in effect for main content */
+}
+
+/* Form container */
+form {
+  padding: 20px;
+  border: 1px solid #b2dfdb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  animation: bounceIn 1s ease-out; /* Bounce-in effect for form */
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #004d40;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.form-group label:hover {
+  color: #00796b; /* Change color on hover */
+}
+
+/* Input and textarea styling */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #004d40;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #00796b;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Styling for two inputs side-by-side */
+.form-group.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between inputs */
+}
+
+.form-group.row .form-group {
+  flex: 1;
+  min-width: calc(50% - 10px); /* Adjust width for two inputs in a row */
+}
+
+/* Skill, experience, and education sections */
+#skills-container,
+.experience,
+.education {
+  margin-bottom: 20px;
+}
+
+.skill,
+.experience > div,
+.education > div {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.skill:hover,
+.experience > div:hover,
+.education > div:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #f0f2f5;
+}
+
+/* Header styling within sections */
+h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #004d40;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+h3:hover {
+  color: #00796b; /* Change color on hover */
+}
+
+/* Textarea styling */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  border-radius: 8px;
+}
+
+/* Button styling */
+button {
+  background-color: #00796b;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background-color: #004d40;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  background-color: #00332d;
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Submit button styling */
+.btn-submit {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: #004d40; /* Dark teal background for button */
+  padding: 1em 2em;
+  border: none;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  width: 220px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background-color: #0c66ed; /* Blue accent for button */
+  border-radius: 50%;
+  transition: transform 0.6s ease, background-color 0.6s ease;
+}
+
+.btn-submit span:nth-child(6) {
+  position: relative;
+}
+
+.btn-submit span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+}
+
+.btn-submit span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+
+.btn-submit span:nth-child(3) {
+  transform: translate(-0.2em, 1.8em);
+}
+
+.btn-submit span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+
+.btn-submit span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+
+.btn-submit:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(4);
+}
+
+.btn-submit:hover {
+  background-color: #00332d; /* Darker shade on hover */
+  transform: scale(1.05);
+}
+
+.btn-submit:active {
+  background-color: #00221d; /* Darker shade on active */
+  transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Floating Action Button */
+.floating-action-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #00796b;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.floating-action-btn:hover {
+  background-color: #004d40;
+  transform: translateY(-4px);
+}
+
+.floating-action-btn:active {
+  background-color: #00332d;
+  transform: translateY(0);
+}

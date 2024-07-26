@@ -25,6 +25,10 @@ const jobSeekerSchema = new mongoose.Schema({
     },
   ],
   appliedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "job" }],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports =

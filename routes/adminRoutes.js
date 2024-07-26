@@ -21,4 +21,9 @@ router.post("/jobs/:id/delete", admin.deleteJob); // Delete a job
 router.get("/jobs/:id", admin.jobDetails); // View details of a specific job
 router.get("/jobs", admin.listJobs); // List all jobs
 
+router.get("/jobseekers/:id/edit", admin.renderEditJobSeekerForm);
+router.get("/jobSeekersList", admin.jobSeekerListRender);
+router.post("/jobseekers/:id/update", admin.updateJobSeeker);
+router.post("/jobseekers/:id/delete", admin.deleteJobSeeker);
+
 module.exports = router;
