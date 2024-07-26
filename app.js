@@ -35,5 +35,11 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send("Internal Server Error");
 });
+const connectDB = require("./database/connectDB");
+
+connectDB();
+app.listen(5001, (req, res) => {
+  console.log("http://localhost:5001/");
+});
 
 module.exports = app;
