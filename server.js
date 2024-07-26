@@ -5,3 +5,5 @@ connectDB();
 app.listen(5001, (req, res) => {
   console.log("http://localhost:5001/");
 });
+
+module.exports = app;
