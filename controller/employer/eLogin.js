@@ -15,9 +15,10 @@ exports.eLoginPost = async (req, res) => {
 
     // Validate email and password
     if (!employer || !(await bcrypt.compare(password, employer.password))) {
-      return res
-        .status(401)
-        .render("employer/eLogin", { error: "Invalid email or password" }); // Updated path
+      return res.status(201).send(
+        `<script>alert("Invalid Username or password");</script>
+         <meta http-equiv="refresh" content="0.1;url=/employer/login">`
+      );
     }
 
     // Set cookies with secure options

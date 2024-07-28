@@ -16,7 +16,7 @@ exports.loginPost = async (req, res) => {
     if (!user) {
       return res.status(400).send(
         `<script>alert("Invalid username or password");</script>
-         <meta http-equiv="refresh" content="0.1;url=/jobseeker/login">` // Updated URL
+         <meta http-equiv="refresh" content="0.1;url=/login">` // Updated URL
       );
     }
 
@@ -25,7 +25,7 @@ exports.loginPost = async (req, res) => {
     if (!isMatch) {
       return res.status(400).send(
         `<script>alert("Invalid username or password");</script>
-         <meta http-equiv="refresh" content="0.1;url=/jobseeker/login">` // Updated URL
+         <meta http-equiv="refresh" content="0.1;url=/login">` // Updated URL
       );
     }
 
@@ -36,7 +36,7 @@ exports.loginPost = async (req, res) => {
     console.error(error);
     res.status(500).send(
       `<script>alert("An error occurred. Please try again later.");</script>
-       <meta http-equiv="refresh" content="0.1;url=/jobseeker/login">` // Updated URL
+       <meta http-equiv="refresh" content="0.1;url=/login">` // Updated URL
     );
   }
 };
