@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon server.js"
+    "start": "npx node server.js"
   },
   "author": "Rithik Yadav",
   "license": "ISC",
