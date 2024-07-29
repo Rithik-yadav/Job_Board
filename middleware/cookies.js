@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const JobSeeker = require("../models/JobSeeker");
 const Employer = require("../models/Employer");
+const Admin = require("../models/Admin");
 
 exports.setCookies = (user, res, statusCode = 200) => {
   const token = jwt.sign({ id: user._id }, "Rithik", { expiresIn: "15m" });
@@ -69,14 +70,14 @@ exports.checkCookiesAdmin = async (req, res, next) => {
   if (!token) {
     return res.status(500).send(
       `<script>alert("You are not authorised for this");</script>
-    <meta http-equiv="refresh" content="0.1;url=admin/login">`
+    <meta http-equiv="refresh" content="0.1;url=/admin/login">`
     );
   }
   const decode = jwt.verify(token, "Rithik");
   try {
-    req.user = await Employer.findById(decode.id);
+    req.user = await Admin.findById(decode.id);
     if (!req.user) {
-      return res.status(401).redirect("admin/login"); // Redirect to login on not found
+      return res.status(401).redirect("/admin/login"); // Redirect to login on not found
     }
     console.log("Admin Cookies checked");
     next();
@@ -84,7 +85,7 @@ exports.checkCookiesAdmin = async (req, res, next) => {
     console.error(error);
     res.status(500).send(
       `<script>alert("An error occurred. Please try again later.");</script>
-    <meta http-equiv="refresh" content="0.1;url=admin/login">`
+    <meta http-equiv="refresh" content="0.1;url=/admin/login">`
     );
   }
 };

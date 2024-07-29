@@ -9,7 +9,7 @@
         <%= employer.companyName %> Details
     </title>
     <link rel="stylesheet" href="/styles/admin/employerDetails.css">
-    <link rel="stylesheet" href="/styles/admin/adminNavbar.css">
+    <link rel="stylesheet" href="/styles/employer/employerNavBar.css">
 </head>
 
 <body>
@@ -17,15 +17,15 @@
         <div class="containerr">
             <nav>
                 <div class="logo">JobZen</div>
-                <div class="nav-links">
-                    <ul>
-                        <li><a href="/admin/dashboard">Dashboard</a></li>
-                        <li><a href="/admin/employers">Employers</a></li>
-                        <li><a href="/admin/jobs">Jobs</a></li>
-                        <li><a href="/admin/jobSeekersList">JobSeekers</a></li>
-                        <li><a href="/admin/logout">Logout</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li><a href="/employer/dashboard">Home</a></li>
+                    <li><a href="/employer/addJob">Jobs</a></li>
+                    <li><a href="/employer/logout">Logout</a></li>
+                </ul>
+                <!-- Profile Photo Link -->
+                <a href="/profile">
+                    <img src="/images/avatar.avif" alt="Profile Photo" class="profile-photo">
+                </a>
             </nav>
         </div>
     </header>
@@ -59,7 +59,7 @@
         </ul>
 
         <h2 style="text-align: center;">Edit Employer</h2>
-        <form action="/admin/employers/<%= employer._id %>/edit" method="post">
+        <form action="/employer/<%= employer._id %>/edit" method="post">
             <label for="companyName">Company Name</label>
             <input type="text" id="companyName" name="companyName" value="<%= employer.companyName %>">
 

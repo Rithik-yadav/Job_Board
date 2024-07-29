@@ -6,6 +6,7 @@ const job = require("../controller/employer/eJobs");
 const cookie = require("../middleware/cookies");
 const home = require("../controller/employer/employerHome");
 const changes = require("../controller/employer/employerEdit");
+const profile = require("../controller/employer/profile");
 
 // Employer login/signup
 router.get("/login", employer.eLoginRender); // Render employer login form
@@ -23,5 +24,8 @@ router.post("/addJobPost", cookie.checkCookiesEmployer, job.addJobPost); // Hand
 router.get("/edit/:id", cookie.checkCookiesEmployer, changes.edit);
 router.post("/edit/:id", cookie.checkCookiesEmployer, changes.editPost);
 router.get("/delete/:id", cookie.checkCookiesEmployer, changes.delete);
+router.get("/profile", cookie.checkCookiesEmployer, profile.profileRender);
+router.post("/:id/edit", cookie.checkCookiesEmployer, profile.editProfile);
+router.get("/logout", cookie.checkCookiesEmployer, employer.logout);
 
 module.exports = router;

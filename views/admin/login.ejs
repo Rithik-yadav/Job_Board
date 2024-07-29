@@ -26,19 +26,21 @@
         </div>
     </header>
     <main>
-        <section class="login-section">
-            <h1>Admin Login</h1>
-            <div class="form-control">
-                <input type="text" required>
-                <label><span>Username</span></label>
-            </div>
-            <div class="form-control">
-                <input type="password" required>
-                <label><span>Password</span></label>
-            </div>
-            <button class="btn"><span>Login</span></button>
-            <p class="signup-link ">Don't have an account? <a href="/admin/signup">Sign up</a></p>
-        </section>
+        <form action="/admin/login" method="post">
+            <section class="login-section">
+                <h1>Admin Login</h1>
+                <div class="form-control">
+                    <input type="text" required name="username">
+                    <label><span>Username</span></label>
+                </div>
+                <div class="form-control">
+                    <input type="password" required name="password">
+                    <label><span>Password</span></label>
+                </div>
+                <button class="btn" type="submit"><span>Login</span></button>
+                <p class="signup-link ">Don't have an account? <a href="/admin/signup">Sign up</a></p>
+            </section>
+        </form>
     </main>
 </body>
 

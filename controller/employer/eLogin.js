@@ -1,6 +1,7 @@
 const Employer = require("../../models/Employer");
 const bcrypt = require("bcrypt");
 const cookie = require("../../middleware/cookies");
+const jwt = require("jsonwebtoken");
 
 exports.eLoginRender = (req, res) => {
   res.render("employer/eLogin"); // Updated path to match the new folder structure
@@ -32,4 +33,12 @@ exports.eLoginPost = async (req, res) => {
       error: "An error occurred. Please try again later.", // Updated path
     });
   }
+};
+exports.logout = (req, res) => {
+  res.cookie("token", "", {
+    expires: new Date(0),
+    httpOnly: true,
+    secure: true,
+  });
+  res.redirect("/employer/login");
 };
