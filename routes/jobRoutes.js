@@ -5,5 +5,6 @@ const cookie = require("../middleware/cookies");
 
 // Feed Job
 router.get("/feed", cookie.checkCookiesJobseeker, job.jobFeed);
+router.get("/:id/apply", cookie.checkCookiesJobseeker, job.apply);
 
 module.exports = router;

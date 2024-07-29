@@ -54,9 +54,12 @@ exports.delete = async (req, res) => {
     await Job.findByIdAndDelete(jobId);
 
     // Redirect with a success message
-    res.redirect(`/employer/home?message=Job deleted successfully`);
+    res.status(201).send(
+      `<script>alert("Deleted Successfully");</script>
+       <meta http-equiv="refresh" content="0.1;url=/employer/home">`
+    );
   } catch (error) {
     console.error(error);
-    res.redirect(`/employer/home?message=Error deleting job`);
+    res.redirect(`/employer/home`);
   }
 };

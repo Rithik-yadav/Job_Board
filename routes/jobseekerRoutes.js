@@ -10,6 +10,7 @@ const home = require("../controller/jobseeker/home");
 router.get("/signup", jobSign.jobSignUp); // Render signup form
 router.post("/signup", jobSign.postSignup); // Handle signup form submission
 // router.post("/verify-otp", jobSign.verifyOtp);
+
 router.get("/verify-otp", jobSign.verifyOtpGet); // Render OTP verification form
 router.post("/verify-otp", jobSign.verifyOtpPost);
 // Login

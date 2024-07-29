@@ -23,7 +23,7 @@ router.post("/addJobPost", cookie.checkCookiesEmployer, job.addJobPost); // Hand
 
 router.get("/edit/:id", cookie.checkCookiesEmployer, changes.edit);
 router.post("/edit/:id", cookie.checkCookiesEmployer, changes.editPost);
-router.get("/delete/:id", cookie.checkCookiesEmployer, changes.delete);
+router.post("/delete/:id", cookie.checkCookiesEmployer, changes.delete);
 router.get("/profile", cookie.checkCookiesEmployer, profile.profileRender);
 router.post("/:id/edit", cookie.checkCookiesEmployer, profile.editProfile);
 router.get("/logout", cookie.checkCookiesEmployer, employer.logout);
