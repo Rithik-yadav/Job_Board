@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 // Use route files
+
 app.use("/", jobseekerRoutes); // Routes for job seekers
 app.use("/employer", employerRoutes); // Routes for employers
 app.use("/job", jobRoutes); // Routes for job postings

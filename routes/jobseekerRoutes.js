@@ -17,5 +17,6 @@ router.get("/login", jobLogin.loginJob); // Render login form
 router.post("/login", jobLogin.loginPost); // Handle login form submission
 router.get("/profile", cookie.checkCookiesJobseeker, profile.profileRender);
 router.get("/", cookie.checkCookiesJobseeker, home.homeRender);
+router.post("/:id/update", profile.updateJobSeeker);
 
 module.exports = router;
