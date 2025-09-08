@@ -2,8 +2,7 @@ const app = require("./app");
 const connectDB = require("./database/connectDB");
 
 connectDB();
-app.listen(5001, (req, res) => {
-  console.log("http://localhost:5001/");
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}/`);
 });
-
-module.exports = app;
