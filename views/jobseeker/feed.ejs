@@ -80,71 +80,69 @@
                 </div>
 
                 <div class="job-cards-container">
-                    <% if (jobs.length> 0) { %>
-                        <% jobs.forEach(job=> { %>
+                    <% if (jobs.length > 0) { %>
+                        <% jobs.forEach(job => { %>
                             <div class="job-card">
                                 <div class="job-details">
-                                    <h2 class="bold-heading">
-                                        <%= job.title %>
-                                    </h2>
+                                    <h2 class="bold-heading"><%= job.title || "No title available" %></h2>
                                     <p class="job-company">
                                         <strong>Company:</strong>
-                                        <%= job.company.companyName %>
+                                        <%= job.company?.companyName || "No company available" %>
                                     </p>
                                     <p class="job-location">
                                         <strong>Location:</strong>
-                                        <%= job.location %>
+                                        <%= job.location || "No location available" %>
                                     </p>
                                     <p class="job-type">
                                         <strong>Job Type:</strong>
-                                        <%= job.mode %>
+                                        <%= job.mode || "No job type available" %>
                                     </p>
                                     <p class="job-expiry">
                                         <strong>Expiry Date:</strong>
-                                        <%= job.expiryDate.toDateString() %>
+                                        <%= job.expiryDate ? job.expiryDate.toDateString() : "No expiry date available" %>
                                     </p>
                                     <p class="job-salary">
-                                        <strong>Salary Range:</strong> $<%= job.salary.min %> - $<%= job.salary.max %>
+                                        <strong>Salary Range:</strong> $<%= job.salary?.min || "N/A" %> - $<%= job.salary?.max || "N/A" %>
                                     </p>
                                     <p class="job-education">
                                         <strong>Education:</strong>
-                                        <%= job.education %>
+                                        <%= job.education || "No education information available" %>
                                     </p>
                                     <p class="job-industry">
                                         <strong>Industry:</strong>
-                                        <%= job.industry %>
+                                        <%= job.industry || "No industry information available" %>
                                     </p>
                                     <button class="more-info-button" onclick="toggleDetails(this)">More Info</button>
                                     <div class="job-additional-info">
                                         <p class="job-description">
                                             <strong>Description:</strong>
-                                            <%= job.description %>
+                                            <%= job.description || "No description available" %>
                                         </p>
                                         <p class="job-experience">
                                             <strong>Experience Required:</strong>
-                                            <%= job.experience %>
+                                            <%= job.experience || "No experience information available" %>
                                         </p>
                                         <p class="job-status">
                                             <strong>Status:</strong>
-                                            <%= job.status %>
+                                            <%= job.status || "No status information available" %>
                                         </p>
                                         <p class="job-skills">
                                             <strong>Skills:</strong>
-                                            <%= job.skills %>
+                                            <%= job.skills || "No skills information available" %>
                                         </p>
                                         <p class="job-benefits">
                                             <strong>Benefits:</strong>
-                                            <%= job.benefits %>
+                                            <%= job.benefits || "No benefits information available" %>
                                         </p>
                                         <p class="job-company-website">
-                                            <strong>Company Website:</strong> <a href="<%= job.companyWebsite %>"
-                                                target="_blank">
-                                                <%= job.companyWebsite %>
+                                            <strong>Company Website:</strong> 
+                                            <a href="<%= job.companyWebsite || '#' %>" target="_blank">
+                                                <%= job.companyWebsite || "No website available" %>
                                             </a>
                                         </p>
                                         <p class="job-contact-email">
                                             <strong>Contact Email:</strong>
-                                            <%= job.contactEmail %>
+                                            <%= job.contactEmail || "No contact email available" %>
                                         </p>
                                     </div>
                                 </div>
@@ -152,10 +150,10 @@
                                     <a href="/job/<%= job._id %>/apply" class="apply-button">Apply Now</a>
                                 </div>
                             </div>
-                            <% }) %>
-                                <% } else { %>
-                                    <p>No job postings available.</p>
-                                    <% } %>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No job postings available.</p>
+                    <% } %>
                 </div>
             </div>
         </section>
